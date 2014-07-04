@@ -1,0 +1,92 @@
+name: PhaetonEssentials
+main: co.phaeton.trinitek.phaetonessentials.Main
+version: 0.4.5
+description: Provides custom administrative services and generic commands
+author: Trinitek
+depend: [PermissionsEx]
+
+commands:
+    tpa:
+        description: Request to teleport to a player
+        usage: "Usage: /<command> <player> [force]"
+        permission: phaetonessentials.tp.tpa
+        permission-message: You don't have permission to do that!
+
+    tphere:
+        description: Request a player teleport to you
+        usage: "Usage: /<command> <player> [force]"
+        permission: phaetonessentials.tp.tphere
+        permission-message: You don't have permission to do that!
+
+    tpaccept:
+        description: Accept a teleport request
+        usage: "Usage: /<command>"
+        permission: phaetonessentials.tp.confirm.accept
+        permission-message: You don't have permission to do that!
+
+    tpdeny:
+        description: Deny a teleport request
+        usage: "Usage: /<command>"
+        permission: phaetonessentials.tp.confirm.deny
+        permission-message: You don't have permission to do that!
+        
+    tplist:
+        description: List all open teleport requests
+        usage: "Usage: /<command>"
+        permission: phaetonessentials.tp.list
+        permission-message: You don't have permission to do that!
+        
+    tpcancel:
+        description: Cancel a teleport request
+        usage: "Usage: /<command>"
+        permission: phaetonessentials.tp.cancel
+        permission-message: You don't have permission to do that!
+
+permissions:
+    phaetonessentials.*:
+        description: Gives access to all PhaetonEssentials commands
+        children:
+            phaetonessentials.tp.tpa: true
+            phaetonessentials.tp.tphere: true
+            phaetonessentials.tp.list: true
+            phaetonessentials.tp.cancel: true
+            phaetonessentials.tp.confirm.accept: true
+            phaetonessentials.tp.confirm.deny: true
+            phaetonessentials.tp.confirm.override: true
+    phaetonessentials.tp.*:
+        description: Gives access to all teleportation commands
+        children:
+            phaetonessentials.tp.tpa: true
+            phaetonessentials.tp.tphere: true
+            phaetonessentials.tp.list: true
+            phaetonessentials.tp.cancel: true
+            phaetonessentials.tp.confirm.accept: true
+            phaetonessentials.tp.confirm.deny: true
+            phaetonessentials.tp.confirm.override: true
+    phaetonessentials.tp.confirm.*:
+        description: Gives access to all request and deny commands and override flags
+        children:
+            phaetonessentials.tp.confirm.accept: true
+            phaetonessentials.tp.confirm.deny: true
+            phaetonessentials.tp.confirm.override: true
+    phaetonessentials.tp.tpa:
+        description: Allows you to request to teleport to another player
+        default: true
+    phaetonessentials.tp.tphere:
+        description: Allows you to request another player to teleport to you
+        default: true
+    phaetonessentials.tp.list:
+        description: Allows you to list all open teleport requests
+        default: true
+    phaetonessentials.tp.cancel:
+        description: Allows you to cancel a teleport request
+        default: true
+    phaetonessentials.tp.confirm.accept:
+        description: Allows you to accept a teleport request
+        default: true
+    phaetonessentials.tp.confirm.deny:
+        description: Allows you to deny a teleport request
+        default: true
+    phaetonessentials.tp.confirm.override:
+        description: Allows you to override the teleport request prompt
+        default: op
