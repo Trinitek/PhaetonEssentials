@@ -93,40 +93,36 @@ public class TeleportHandler {
 	 */
 	public void acceptRequest(Player commandSender) {
 		
-		//TODO: change FOR loop to the enhanced version
-		
 		// file through the requestQueue and look for commandSender == requestRecipient
-		for (int index = 0; index < requestQueue.size(); index++) {
-			if (requestQueue.get(index).getRecipient() == commandSender) {
-				Player requestSender = requestQueue.get(index).getSender();
-				Player requestRecipient = requestQueue.get(index).getRecipient();
+		for (TeleportRequest request : requestQueue) {
+			Player requestSender = request.getSender();
+			Player requestRecipient = request.getRecipient();
+			
+			// send each of them messages saying that the request was confirmed
+			requestSender.sendMessage(ChatColor.YELLOW + requestRecipient.getName() + " accepted your teleport request");
+			requestRecipient.sendMessage(ChatColor.YELLOW + "Request accepted. Teleporting...");
+			
+			if (request.getRequestType()) { // 'tpa' - sender >> recipient
+				// write the teleport record to the sender's history
+				TeleportHistoryHandler.add(requestSender, new TeleportHistory(requestSender.getLocation(), TeleportDirection.OUTGOING));
+				TeleportHistoryHandler.add(requestSender, new TeleportHistory(requestRecipient.getLocation(), TeleportDirection.INCOMING));
 				
-				// send each of them messages saying that the request was confirmed
-				requestSender.sendMessage(ChatColor.YELLOW + requestRecipient.getName() + " accepted your teleport request");
-				requestRecipient.sendMessage(ChatColor.YELLOW + "Request accepted. Teleporting...");
+				// and teleport
+				requestSender.teleport(requestRecipient);
 				
-				if (requestQueue.get(index).getRequestType()) { // 'tpa' - sender >> recipient
-					// write the teleport record to the sender's history
-					TeleportHistoryHandler.add(requestSender, new TeleportHistory(requestSender.getLocation(), TeleportDirection.OUTGOING));
-					TeleportHistoryHandler.add(requestSender, new TeleportHistory(requestRecipient.getLocation(), TeleportDirection.INCOMING));
-					
-					// and teleport
-					requestSender.teleport(requestRecipient);
-					
-				} else { // 'tphere' - sender << recipient
-					// write the teleport record to the recipient's history
-					TeleportHistoryHandler.add(requestRecipient, new TeleportHistory(requestRecipient.getLocation(), TeleportDirection.OUTGOING));
-					TeleportHistoryHandler.add(requestRecipient, new TeleportHistory(requestSender.getLocation(), TeleportDirection.INCOMING));
-					
-					// and teleport
-					requestRecipient.teleport(requestSender);
-				}
+			} else { // 'tphere' - sender << recipient
+				// write the teleport record to the recipient's history
+				TeleportHistoryHandler.add(requestRecipient, new TeleportHistory(requestRecipient.getLocation(), TeleportDirection.OUTGOING));
+				TeleportHistoryHandler.add(requestRecipient, new TeleportHistory(requestSender.getLocation(), TeleportDirection.INCOMING));
 				
-				// and remove that request from the queue
-				requestQueue.remove(index);
-				
-				return;
+				// and teleport
+				requestRecipient.teleport(requestSender);
 			}
+			
+			// and remove that request from the queue
+			requestQueue.remove(request);
+			
+			return;
 		}
 		
 		// otherwise, there must not have been a request waiting
@@ -139,22 +135,24 @@ public class TeleportHandler {
 	 */
 	public void denyRequest(Player commandSender) {
 		
-		//TODO: change FOR loop to the enhanced version
-		
 		// file through the requestQueue and look for commandSender == requestRecipient
+		for (TeleportRequest request : requestQueue) {
+			Player requestSender = request.getSender();
+			Player requestRecipient = request.getRecipient();
+			
+			// send each of them messages saying that the request was denied
+			requestSender.sendMessage(ChatColor.RED + requestRecipient.getName() + " denied your teleport request");
+			requestRecipient.sendMessage(ChatColor.RED + requestSender.getName() + "'s teleport request was denied");
+			
+			// and remove that request from the queue
+			requestQueue.remove(request);
+			
+			return;
+		}
+		
 		for (int index = 0; index < requestQueue.size(); index++) {
 			if (requestQueue.get(index).getRecipient() == commandSender) {
-				Player requestSender = requestQueue.get(index).getSender();
-				Player requestRecipient = requestQueue.get(index).getRecipient();
 				
-				// send each of them messages saying that the request was denied
-				requestSender.sendMessage(ChatColor.RED + requestRecipient.getName() + " denied your teleport request");
-				requestRecipient.sendMessage(ChatColor.RED + requestSender.getName() + "'s teleport request was denied");
-				
-				// and remove that request from the queue
-				requestQueue.remove(index);
-				
-				return;
 			}
 		}
 		
