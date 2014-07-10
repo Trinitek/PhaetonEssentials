@@ -50,7 +50,7 @@ public class TeleportCommandHandler {
 		/*
 		 * Check for the right number of arguments (either 1 or 2)
 		 */
-		if ((args.length < 1) || args.length > 2) {
+		if ((args.length < 1) || (args.length > 2)) {
 			sender.sendMessage(ChatColor.RED + "Wrong number of arguments");
 			return false;
 		}
@@ -103,6 +103,35 @@ public class TeleportCommandHandler {
 	}
 	
 	private static boolean backCommand(CommandSender cmdSender, String[] args) {
+		Player sender;
+		
+		// The following commands require at least one argument
+		if (args.length > 0) {
+			// Check for 'list'
+			if (args[0].equalsIgnoreCase("list")) {
+				// If a player is specified, display the TeleportHistory list for that player
+				if (args.length > 1) {
+					// Either a console user or a Player with permissions can execute this command
+					if (!(Main.denyConsoleSender(cmdSender))) {
+						sender = (Player) cmdSender;
+						if (PermissionsEx.getUser(sender).has("phaetonessentials.tp.back.listplayer")) {
+							// TODO print specified player's TeleportHistory
+						}
+					} else {
+						// TODO print specified player's TeleportHistory
+					}
+				} else {
+					// TODO print player's own TeleportHistory
+					// Only players can execute this command
+					if (Main.denyConsoleSender(cmdSender)) {
+						return true;
+					} else {
+						sender = (Player) cmdSender;
+					}
+				}
+			}
+		}
+		
 		return false;
 	}
 	

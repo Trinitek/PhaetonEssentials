@@ -1,5 +1,7 @@
 package co.phaeton.trinitek.phaetonessentials.teleport;
 
+import java.util.Calendar;
+
 import org.bukkit.Location;
 
 /**
@@ -9,6 +11,7 @@ public class TeleportHistory {
 	
 	private Location location;
 	private TeleportDirection direction;
+	private Calendar timestamp;
 	
 	/**
 	 * Constructor for the TeleportHistory object
@@ -18,6 +21,7 @@ public class TeleportHistory {
 	public TeleportHistory(Location newLocation, TeleportDirection newDirection) {
 		this.location = newLocation;
 		this.direction = newDirection;
+		this.timestamp = Calendar.getInstance();
 	}
 	
 	/**
@@ -32,6 +36,14 @@ public class TeleportHistory {
 	 */
 	public TeleportDirection getDirection() {
 		return this.direction;
+	}
+	
+	/**
+	 * Get the timestamp of when this object was created
+	 * @return timestamp Calendar
+	 */
+	public Calendar getTimestamp() {
+		return this.timestamp;
 	}
 	
 }

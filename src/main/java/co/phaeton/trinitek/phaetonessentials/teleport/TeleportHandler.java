@@ -14,6 +14,7 @@ public class TeleportHandler {
 		// dynamically expanding array of open requests
 		this.requestQueue = new ArrayList<TeleportRequest>();
 	}
+
 	
 	/**
 	 * Get the number of currently open requests
@@ -36,6 +37,10 @@ public class TeleportHandler {
 		}
 	}
 	
+	/**
+	 * Send a list of the currently open requests to the specified CommandSender's chat
+	 * @param cmdSender
+	 */
 	public void displayRequestList(CommandSender cmdSender) {
 		cmdSender.sendMessage(ChatColor.GRAY + "There are " + Integer.toString(getNumberOfOpenRequests()) + " open teleport requests");
 		

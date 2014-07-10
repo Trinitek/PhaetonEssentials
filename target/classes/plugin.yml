@@ -1,6 +1,6 @@
 name: PhaetonEssentials
 main: co.phaeton.trinitek.phaetonessentials.Main
-version: 0.4.5
+version: 0.4.6
 description: Provides custom administrative services and generic commands
 author: Trinitek
 depend: [PermissionsEx]
@@ -41,6 +41,12 @@ commands:
         usage: "Usage: /<command>"
         permission: phaetonessentials.tp.cancel
         permission-message: You don't have permission to do that!
+        
+    back:
+        description: Go back to your previous location
+        usage: "Usage: /<command> [list] [playerName]"
+        permission: phaetonessentials.tp.back
+        permission-message: You don't have permission to do that!
 
 permissions:
     phaetonessentials.*:
@@ -53,6 +59,10 @@ permissions:
             phaetonessentials.tp.confirm.accept: true
             phaetonessentials.tp.confirm.deny: true
             phaetonessentials.tp.confirm.override: true
+            phaetonessentials.tp.back.basic: true
+            phaetonessentials.tp.back.specify: true
+            phaetonessentials.tp.back.list: true
+            phaetonessentials.tp.back.listplayer: true
     phaetonessentials.tp.*:
         description: Gives access to all teleportation commands
         children:
@@ -63,12 +73,23 @@ permissions:
             phaetonessentials.tp.confirm.accept: true
             phaetonessentials.tp.confirm.deny: true
             phaetonessentials.tp.confirm.override: true
+            phaetonessentials.tp.back.basic: true
+            phaetonessentials.tp.back.specify: true
+            phaetonessentials.tp.back.list: true
+            phaetonessentials.tp.back.listplayer: true
     phaetonessentials.tp.confirm.*:
         description: Gives access to all request and deny commands and override flags
         children:
             phaetonessentials.tp.confirm.accept: true
             phaetonessentials.tp.confirm.deny: true
             phaetonessentials.tp.confirm.override: true
+    phaetonessentials.tp.back.*:
+        description: Gives access to all back-teleporting commands
+        children:
+            phaetonessentials.tp.back.basic: true
+            phaetonessentials.tp.back.specify: true
+            phaetonessentials.tp.back.list: true
+            phaetonessentials.tp.back.listplayer: true
     phaetonessentials.tp.tpa:
         description: Allows you to request to teleport to another player
         default: true
@@ -90,3 +111,15 @@ permissions:
     phaetonessentials.tp.confirm.override:
         description: Allows you to override the teleport request prompt
         default: op
+    phaetonessentials.tp.back.basic:
+        description: Allows you to use the basic command
+        default: true
+    phaetonessentials.tp.back.specify:
+        description: Allows you to specify any previous teleport location to go back to
+        default: true
+    phaetonessentials.tp.back.list:
+        description: Allows you to list all of your previous teleport locations
+        default: true
+    phaetonessentials.tp.back.listplayer:
+        description: Allows you to list all of the previous teleport locations of a specified player
+        default: true
