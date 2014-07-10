@@ -36,16 +36,17 @@ public class TeleportCommandHandler {
 		/*
 		 * The 'tpaccept' and 'tpdeny' commands don't need the special treatment ahead.
 		 */
-		if (command.equals("tpaccept")) {
-			teleportHandler.acceptRequest(sender);
-			return true;
-		} else if (command.equals("tpdeny")) {
-			teleportHandler.denyRequest(sender);
-			return true;
-		} else if (command.equals("tpcancel")) {
-			teleportHandler.cancelRequest(sender);
-			return true;
-		}
+        switch (command) {
+            case "tpaccept":
+                teleportHandler.acceptRequest(sender);
+                return true;
+            case "tpdeny":
+                teleportHandler.denyRequest(sender);
+                return true;
+            case "tpcancel":
+                teleportHandler.cancelRequest(sender);
+                return true;
+        }
 		
 		/*
 		 * Check for the right number of arguments (either 1 or 2)

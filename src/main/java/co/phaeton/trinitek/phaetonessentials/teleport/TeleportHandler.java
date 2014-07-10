@@ -11,8 +11,8 @@ public class TeleportHandler {
 	private ArrayList<TeleportRequest> requestQueue;
 	
 	public TeleportHandler() {
-		// dynamically expanding array of open requests
-		this.requestQueue = new ArrayList<TeleportRequest>();
+		// dynamically expanding array of TeleportRequests
+		this.requestQueue = new ArrayList<>();
 	}
 
 	
@@ -26,7 +26,7 @@ public class TeleportHandler {
 	
 	/**
 	 * Helper method for creating a formatted String representation of the type of request
-	 * @param request
+	 * @param request - TeleportRequest to process
 	 * @return ">>" if 'tpa', or "<<" if 'tphere'
 	 */
 	private String requestTypeToString(TeleportRequest request) {
@@ -39,7 +39,7 @@ public class TeleportHandler {
 	
 	/**
 	 * Send a list of the currently open requests to the specified CommandSender's chat
-	 * @param cmdSender
+	 * @param cmdSender - Entity that sent the command
 	 */
 	public void displayRequestList(CommandSender cmdSender) {
 		cmdSender.sendMessage(ChatColor.GRAY + "There are " + Integer.toString(getNumberOfOpenRequests()) + " open teleport requests");
@@ -70,16 +70,16 @@ public class TeleportHandler {
 			 * If overridePrompt is not set, check for any pending requests on the receiver's side, and for
 			 * an already existing request on the sender's side, before creating a new one
 			 */
-			for (int index = 0; index < requestQueue.size(); index++) {
-				if (requestQueue.get(index).getRecipient() == recipient) {
-					sender.sendMessage(ChatColor.RED + recipient.getName() + " already has a pending teleport request");
-					return;
-				} else if (requestQueue.get(index).getSender() == sender) {
-					sender.sendMessage(ChatColor.RED + requestQueue.get(index).getRecipient().getName() + " hasn't answered your previous request yet. Use /tpcancel to abort.");
-					return;
-				}
-			}
-			
+            for (TeleportRequest request : requestQueue) {
+                if (request.getRecipient() == recipient) {
+                    sender.sendMessage(ChatColor.RED + recipient.getName() + " already has a pending teleport request");
+                    return;
+                } else if (request.getSender() == sender) {
+                    sender.sendMessage(ChatColor.RED + request.getRecipient().getName() + " hasn't answered your previous request yet. Use /tpcancel to abort.");
+                    return;
+                }
+            }
+
 			// add the request to the queue and tell the two players that it went through
 			requestQueue.add(new TeleportRequest(requestType, sender, recipient));
 			sender.sendMessage(ChatColor.GRAY + "Teleport request sent to " + recipient.getName());
@@ -94,40 +94,42 @@ public class TeleportHandler {
 	
 	/**
 	 * Process the /tpaccept command. The sender of this command is the recipient of the request.
-	 * @param Player that sent the command
+	 * @param commandSender - Player that sent the command
 	 */
 	public void acceptRequest(Player commandSender) {
 		
 		// file through the requestQueue and look for commandSender == requestRecipient
 		for (TeleportRequest request : requestQueue) {
-			Player requestSender = request.getSender();
-			Player requestRecipient = request.getRecipient();
-			
-			// send each of them messages saying that the request was confirmed
-			requestSender.sendMessage(ChatColor.YELLOW + requestRecipient.getName() + " accepted your teleport request");
-			requestRecipient.sendMessage(ChatColor.YELLOW + "Request accepted. Teleporting...");
-			
-			if (request.getRequestType()) { // 'tpa' - sender >> recipient
-				// write the teleport record to the sender's history
-				TeleportHistoryHandler.add(requestSender, new TeleportHistory(requestSender.getLocation(), TeleportDirection.OUTGOING));
-				TeleportHistoryHandler.add(requestSender, new TeleportHistory(requestRecipient.getLocation(), TeleportDirection.INCOMING));
-				
-				// and teleport
-				requestSender.teleport(requestRecipient);
-				
-			} else { // 'tphere' - sender << recipient
-				// write the teleport record to the recipient's history
-				TeleportHistoryHandler.add(requestRecipient, new TeleportHistory(requestRecipient.getLocation(), TeleportDirection.OUTGOING));
-				TeleportHistoryHandler.add(requestRecipient, new TeleportHistory(requestSender.getLocation(), TeleportDirection.INCOMING));
-				
-				// and teleport
-				requestRecipient.teleport(requestSender);
-			}
-			
-			// and remove that request from the queue
-			requestQueue.remove(request);
-			
-			return;
+            if (request.getRecipient() == commandSender) {
+                Player requestSender = request.getSender();
+                Player requestRecipient = request.getRecipient();
+
+                // send each of them messages saying that the request was confirmed
+                requestSender.sendMessage(ChatColor.YELLOW + requestRecipient.getName() + " accepted your teleport request");
+                requestRecipient.sendMessage(ChatColor.YELLOW + "Request accepted. Teleporting...");
+
+                if (request.getRequestType()) { // 'tpa' - sender >> recipient
+                    // write the teleport record to the sender's history
+                    TeleportHistoryHandler.add(requestSender, new TeleportHistory(requestSender.getLocation(), TeleportDirection.OUTGOING));
+                    TeleportHistoryHandler.add(requestSender, new TeleportHistory(requestRecipient.getLocation(), TeleportDirection.INCOMING));
+
+                    // and teleport
+                    requestSender.teleport(requestRecipient);
+
+                } else { // 'tphere' - sender << recipient
+                    // write the teleport record to the recipient's history
+                    TeleportHistoryHandler.add(requestRecipient, new TeleportHistory(requestRecipient.getLocation(), TeleportDirection.OUTGOING));
+                    TeleportHistoryHandler.add(requestRecipient, new TeleportHistory(requestSender.getLocation(), TeleportDirection.INCOMING));
+
+                    // and teleport
+                    requestRecipient.teleport(requestSender);
+
+                    // and remove that request from the queue
+                    requestQueue.remove(request);
+
+                    return;
+                }
+            }
 		}
 		
 		// otherwise, there must not have been a request waiting
@@ -136,37 +138,33 @@ public class TeleportHandler {
 	
 	/**
 	 * Process the /tpdeny command. The sender of this command is the recipient of the request.
-	 * @param Player that sent the command
+	 * @param commandSender - Player that sent the command
 	 */
 	public void denyRequest(Player commandSender) {
 		
 		// file through the requestQueue and look for commandSender == requestRecipient
 		for (TeleportRequest request : requestQueue) {
-			Player requestSender = request.getSender();
-			Player requestRecipient = request.getRecipient();
-			
-			// send each of them messages saying that the request was denied
-			requestSender.sendMessage(ChatColor.RED + requestRecipient.getName() + " denied your teleport request");
-			requestRecipient.sendMessage(ChatColor.RED + requestSender.getName() + "'s teleport request was denied");
-			
-			// and remove that request from the queue
-			requestQueue.remove(request);
-			
-			return;
-		}
-		
-		for (int index = 0; index < requestQueue.size(); index++) {
-			if (requestQueue.get(index).getRecipient() == commandSender) {
-				
-			}
-		}
+            if (request.getRecipient() == commandSender) {
+                Player requestSender = request.getSender();
+                Player requestRecipient = request.getRecipient();
+
+                // send each of them messages saying that the request was denied
+                requestSender.sendMessage(ChatColor.RED + requestRecipient.getName() + " denied your teleport request");
+                requestRecipient.sendMessage(ChatColor.RED + requestSender.getName() + "'s teleport request was denied");
+
+                // and remove that request from the queue
+                requestQueue.remove(request);
+
+                return;
+            }
+        }
 		
 		// otherwise, there must not have been a request waiting
 		commandSender.sendMessage(ChatColor.RED + "There are no teleport requests waiting for you");
 	}
 
 	public void cancelRequest(Player commandSender) {
-		// file through the requestQueue and look for commandSender == sender
+		// file through the requestQueue and look for commandSender == requestSender
 		for (TeleportRequest request : requestQueue) {
 			if (request.getSender() == commandSender) {
 				Player requestSender = request.getSender();
@@ -185,7 +183,6 @@ public class TeleportHandler {
 		
 		// otherwise, the sender must not have sent a request
 		commandSender.sendMessage(ChatColor.RED + "You do not have any pending outgoing requests");
-		
 	}
 
 }
