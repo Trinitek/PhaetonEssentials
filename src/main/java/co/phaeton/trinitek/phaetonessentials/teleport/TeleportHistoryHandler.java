@@ -6,14 +6,9 @@ import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
 
 public class TeleportHistoryHandler {
 
-	//private static Map<Player, ArrayList<TeleportHistory>> playerTeleportList = new Map<Player, ArrayList<TeleportHistory>>;
-    //private static Map<Player, ArrayList<TeleportHistory>> playerTeleportList = new Map<Player, ArrayList<TeleportHistory>>();
 	private static Map<Player, ArrayList<TeleportHistory>> playerTeleportList = new HashMap<>();
 
 	/**
@@ -67,15 +62,5 @@ public class TeleportHistoryHandler {
 	public static void remove(Player player) {
         Bukkit.getServer().getLogger().info("[PhaetonEssentials] " + player.getPlayerListName() + " removed from TeleportHistory hashmap");
 		playerTeleportList.remove(player);
-	}
-	
-	@EventHandler
-	public void onPlayerJoin(PlayerJoinEvent event) {
-		create(event.getPlayer());
-    }
-	
-	@EventHandler
-	public void onPlayerLeave(PlayerQuitEvent event) {
-		remove(event.getPlayer());
 	}
 }

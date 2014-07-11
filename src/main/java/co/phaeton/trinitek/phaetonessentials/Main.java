@@ -4,20 +4,27 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerLoginEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import co.phaeton.trinitek.phaetonessentials.teleport.TeleportCommandHandler;
 import co.phaeton.trinitek.phaetonessentials.teleport.TeleportHandler;
 import co.phaeton.trinitek.phaetonessentials.teleport.TeleportHistoryHandler;
 
-public final class Main extends JavaPlugin {
+public final class Main extends JavaPlugin implements Listener {
 	
 	private TeleportHandler teleportHandler;
 
 	@Override
 	public void onEnable() {
+        // Register event listeners
+        getServer().getPluginManager().registerEvents(this, this);
+
 		this.teleportHandler = new TeleportHandler();
-		
+
 		// Associate a new TeleportHistory list for each online Player
 		for (Player player : getServer().getOnlinePlayers()) {
 			TeleportHistoryHandler.create(player);
@@ -28,6 +35,16 @@ public final class Main extends JavaPlugin {
 	public void onDisable() {
 		this.teleportHandler = null;
 	}
+
+    @EventHandler
+    public void onPlayerJoin(PlayerLoginEvent event) {
+        TeleportHistoryHandler.create(event.getPlayer());
+    }
+
+    @EventHandler
+    public void onPlayerLeave(PlayerQuitEvent event) {
+        TeleportHistoryHandler.remove(event.getPlayer());
+    }
 
 	@Override
 	public boolean onCommand(CommandSender cmdSender, Command cmd, String rawCmd, String[] args) {
