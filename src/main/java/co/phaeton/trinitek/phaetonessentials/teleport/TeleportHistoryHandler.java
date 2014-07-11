@@ -1,6 +1,7 @@
 package co.phaeton.trinitek.phaetonessentials.teleport;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.bukkit.entity.Player;
@@ -10,23 +11,34 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class TeleportHistoryHandler {
 
-	private static Map<Player, ArrayList<TeleportHistory>> playerTeleportList;
-	
+	//private static Map<Player, ArrayList<TeleportHistory>> playerTeleportList = new Map<Player, ArrayList<TeleportHistory>>;
+    //private static Map<Player, ArrayList<TeleportHistory>> playerTeleportList = new Map<Player, ArrayList<TeleportHistory>>();
+	private static Map<Player, ArrayList<TeleportHistory>> playerTeleportList = new HashMap<>();
+
 	/**
 	 * Assign a new teleport history listing for the given Player
 	 * @param player - Player that the list is to be assigned to
+     * @return false if player's list already exists
 	 */
-	public static void create(Player player) {
-		playerTeleportList.put(player, new ArrayList<TeleportHistory>());
+	public static boolean create(Player player) {
+        // If that player already exists, do nothing
+        if (!(playerTeleportList.containsKey(player))) {
+            playerTeleportList.put(player, new ArrayList<TeleportHistory>());
+            return true;
+        } else return false;
 	}
 	
 	/**
 	 * Assign a given teleport history listing for the given Player
 	 * @param player - Player that the list is to be assigned to
 	 * @param historyList - ArrayList of TeleportHistory objects to assign to the Player
+     * @return false if player's list already exists
 	 */
-	public static void create(Player player, ArrayList<TeleportHistory> historyList) {
-		playerTeleportList.put(player, historyList);
+	public static boolean create(Player player, ArrayList<TeleportHistory> historyList) {
+        if (!(playerTeleportList.containsKey(player))) {
+            playerTeleportList.put(player, historyList);
+            return true;
+        } else return false;
 	}
 	
 	/**
