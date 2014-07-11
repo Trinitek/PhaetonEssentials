@@ -16,30 +16,49 @@ public class PageBuilder {
 
     private static final int DEFAULT_PAGE_SIZE = 10;
 
+    /**
+     * Constructor to create a new PageBuilder
+     * Does not accept arguments
+     */
     public PageBuilder() {
         this.sizeOfPage = DEFAULT_PAGE_SIZE;
         this.numberOfPages = 1;
         this.numberOfBodyLinesPerPage = 0;
     }
 
+    /**
+     * Set the header to the given ArrayList of Strings
+     * @param stringList - ArrayList of Strings that constitute the header
+     */
     public void setHeader(ArrayList<String> stringList) {
         if (stringList == null) stringList = new ArrayList<>();
         this.header = stringList;
         adjustPageSize();
     }
 
+    /**
+     * Set the body to the given ArrayList of Strings
+     * @param stringList - ArrayList of Strings that constitute the body
+     */
     public void setBody(ArrayList<String> stringList) {
         if (stringList == null) stringList = new ArrayList<>();
         this.body = stringList;
         adjustPageSize();
     }
 
+    /**
+     * Set the footer to the given ArrayList of Strings
+     * @param stringList - ArrayList of Strings that constitute the footer
+     */
     public void setFooter(ArrayList<String> stringList) {
         if (stringList == null) stringList = new ArrayList<>();
         this.footer = stringList;
         adjustPageSize();
     }
 
+    /**
+     * Adjust all the object's variables to account for changes in the size of the message's string arrays
+     */
     private void adjustPageSize() {
         int headerLength = this.header.size();
         int bodyLength = this.body.size();
@@ -99,6 +118,11 @@ public class PageBuilder {
         return returnString;
     }
 
+    /**
+     * Builds and sends a specified page to the given CommandSender
+     * @param commandSender - person to whom the message shall be sent
+     * @param pageNumber - page number to build and send
+     */
     public void showPage(CommandSender commandSender, int pageNumber) {
         commandSender.sendMessage(buildPage(pageNumber));
     }
