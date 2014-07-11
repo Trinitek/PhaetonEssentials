@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -22,10 +23,7 @@ public class TeleportHistoryHandler {
 	 */
 	public static boolean create(Player player) {
         // If that player already exists, do nothing
-        if (!(playerTeleportList.containsKey(player))) {
-            playerTeleportList.put(player, new ArrayList<TeleportHistory>());
-            return true;
-        } else return false;
+        return create(player, new ArrayList<TeleportHistory>());
 	}
 	
 	/**
@@ -35,8 +33,10 @@ public class TeleportHistoryHandler {
      * @return false if player's list already exists
 	 */
 	public static boolean create(Player player, ArrayList<TeleportHistory> historyList) {
+        // If that player already exists, do nothing
         if (!(playerTeleportList.containsKey(player))) {
             playerTeleportList.put(player, historyList);
+            Bukkit.getServer().getLogger().info("[PhaetonEssentials] " + player.getPlayerListName() + " added to TeleportHistory hashmap");
             return true;
         } else return false;
 	}
@@ -48,6 +48,7 @@ public class TeleportHistoryHandler {
 	 */
 	public static void add(Player player, TeleportHistory newEntry) {
 		playerTeleportList.get(player).add(newEntry);
+        Bukkit.getServer().getLogger().info("[PhaetonEssentials] New TeleportHistory entry added for " + player.getPlayerListName());
 	}
 	
 	/**
@@ -64,13 +65,14 @@ public class TeleportHistoryHandler {
 	 * @param player - Player that holds the list to be modified
 	 */
 	public static void remove(Player player) {
+        Bukkit.getServer().getLogger().info("[PhaetonEssentials] " + player.getPlayerListName() + " removed from TeleportHistory hashmap");
 		playerTeleportList.remove(player);
 	}
 	
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		create(event.getPlayer());
-	}
+    }
 	
 	@EventHandler
 	public void onPlayerLeave(PlayerQuitEvent event) {
