@@ -53,20 +53,19 @@ public final class Main extends JavaPlugin implements Listener {
 		/*
 		 * Check for the teleport request commands.
 		 */
-		if ((command.equals("tpa")) ||
-			(command.equals("tphere")) ||
-			(command.equals("tpaccept")) ||
-			(command.equals("tpdeny")) ||
-			(command.equals("tplist")) ||
-			(command.equals("tpcancel")) ||
-			(command.equals("back"))) {
-			
-			return TeleportCommandHandler.TeleportCommand(cmdSender, command, args, this.teleportHandler);
-
-		}
-		
-		// no valid command entered, display 'Usage:' message
-		return false;
+        switch (command) {
+            case "tpa":
+            case "tphere":
+            case "tpaccept":
+            case "tpdeny":
+            case "tplist":
+            case "tpcancel":
+            case "back":
+                return TeleportCommandHandler.TeleportCommand(cmdSender, command, args, this.teleportHandler);
+            default:
+                // no valid command entered, display 'Usage:' message
+                return false;
+        }
 	}
 	
 	/**
