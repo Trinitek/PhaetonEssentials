@@ -1,6 +1,6 @@
 name: PhaetonEssentials
 main: co.phaeton.trinitek.phaetonessentials.Main
-version: 0.5.0
+version: 0.5.3
 description: Provides custom administrative services and generic commands
 author: Trinitek
 depend: [PermissionsEx]
@@ -44,8 +44,14 @@ commands:
         
     back:
         description: Go back to your previous location
-        usage: "Usage: /<command> [list] [playerName]"
+        usage: "Usage: /<command> [list] [<pageNumber> [playerName]]"
         permission: phaetonessentials.tp.back
+        permission-message: You don't have permission to do that!
+
+    afk:
+        description: Toggle your AFK status
+        usage: "Usage: /<command>"
+        permission: phaetonessentials.afk
         permission-message: You don't have permission to do that!
 
 permissions:
@@ -63,6 +69,7 @@ permissions:
             phaetonessentials.tp.back.specify: true
             phaetonessentials.tp.back.list: true
             phaetonessentials.tp.back.listplayer: true
+            phaetonessentials.afk: true
     phaetonessentials.tp.*:
         description: Gives access to all teleportation commands
         children:
@@ -122,4 +129,7 @@ permissions:
         default: true
     phaetonessentials.tp.back.listplayer:
         description: Allows you to list all of the previous teleport locations of a specified player
+        default: true
+    phaetonessentials.afk:
+        description: Allows you to toggle your AFK status
         default: true

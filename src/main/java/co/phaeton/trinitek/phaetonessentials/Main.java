@@ -1,5 +1,6 @@
 package co.phaeton.trinitek.phaetonessentials;
 
+import co.phaeton.trinitek.phaetonessentials.generic.AfkHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -14,9 +15,14 @@ import co.phaeton.trinitek.phaetonessentials.teleport.TeleportCommandHandler;
 import co.phaeton.trinitek.phaetonessentials.teleport.TeleportHandler;
 import co.phaeton.trinitek.phaetonessentials.teleport.TeleportHistoryHandler;
 
+/* THE BIG TO-DO LIST!
+TODO add /back functionality
+ */
+
 public final class Main extends JavaPlugin implements Listener {
 	
 	private TeleportHandler teleportHandler;
+    private AfkHandler afkHandler;
 
 	@Override
 	public void onEnable() {
@@ -24,6 +30,7 @@ public final class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(this, this);
 
 		this.teleportHandler = new TeleportHandler();
+        this.afkHandler = new AfkHandler(this);
 
 		// Associate a new TeleportHistory list for each online Player
 		for (Player player : getServer().getOnlinePlayers()) {
@@ -62,6 +69,8 @@ public final class Main extends JavaPlugin implements Listener {
             case "tpcancel":
             case "back":
                 return TeleportCommandHandler.TeleportCommand(cmdSender, command, args, this.teleportHandler);
+            case "afk":
+                return this.afkHandler.toggleAfk(cmdSender);
             default:
                 // no valid command entered, display 'Usage:' message
                 return false;
