@@ -48,6 +48,32 @@ public class AfkHandler implements Listener {
     }
 
     /**
+     * Process any additional arguments for this command
+     * @param commandSender - CommandSender that issued the command
+     * @param args - argument list
+     * @return true if successful
+     */
+    public boolean processCommand(CommandSender commandSender, String[] args) {
+        if (args.length > 0)
+            if (args[0].equalsIgnoreCase("list")) {
+                commandSender.sendMessage(ChatColor.GRAY + "There are " + afkList.size() + " players AFK:");
+
+                String playerList = ChatColor.GRAY + "";
+                for (int index = 0; index < afkList.size(); index++) {
+                    playerList = playerList.concat(afkList.get(index).getName());
+
+                    if (index + 1 < afkList.size())
+                        playerList = playerList.concat(", ");
+                }
+
+                commandSender.sendMessage(playerList);
+
+                return true;
+            }
+
+        return toggleAfk(commandSender);
+    }
+    /**
      * Toggle the AFK status for the given Player.
      * If the player is AFK, then set the flag to false. Otherwise, set the flag to true.
      * @param commandSender - CommandSender object to apply AFK status to. Must be an instance of Player.

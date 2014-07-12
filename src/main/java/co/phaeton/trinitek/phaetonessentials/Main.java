@@ -70,7 +70,7 @@ public final class Main extends JavaPlugin implements Listener {
             case "back":
                 return TeleportCommandHandler.TeleportCommand(cmdSender, command, args, this.teleportHandler);
             case "afk":
-                return this.afkHandler.toggleAfk(cmdSender);
+                return this.afkHandler.processCommand(cmdSender, args);
             default:
                 // no valid command entered, display 'Usage:' message
                 return false;
