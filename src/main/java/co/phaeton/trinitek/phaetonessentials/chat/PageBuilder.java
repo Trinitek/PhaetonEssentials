@@ -3,7 +3,7 @@ package co.phaeton.trinitek.phaetonessentials.chat;
 import org.bukkit.command.CommandSender;
 
 public class PageBuilder {
-    
+
     private String[] header;
     private String[] body;
     private String[] footer;
@@ -83,7 +83,7 @@ public class PageBuilder {
      * @param pageNumber - page number to generate
      * @return String array of the page's contents
      */
-    private String[] buildPage(int pageNumber) {
+    public String[] buildPage(int pageNumber) {
         String[] returnString = new String[this.sizeOfPage];
         int currentIndex = 0;
 
@@ -101,7 +101,7 @@ public class PageBuilder {
 
         // If the body array has less than numberOfBodyLinesPerPage left, then only append the remaining strings
         if ((this.body.length - bodyIndex + 1 < this.numberOfBodyLinesPerPage))
-            bodyLinesToShow = this.body.size() - bodyIndex + 1;
+            bodyLinesToShow = this.body.length - bodyIndex + 1;
         else
             bodyLinesToShow = this.numberOfBodyLinesPerPage;
         System.arraycopy(this.body, bodyIndex, returnString, currentIndex, bodyLinesToShow);
