@@ -3,7 +3,6 @@ package co.phaeton.trinitek.phaetonessentials.chat;
 import org.bukkit.command.CommandSender;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class PageBuilder {
 
@@ -89,6 +88,7 @@ public class PageBuilder {
      * @param pageNumber - page number to generate
      * @return String array of the page's contents
      */
+    @SuppressWarnings("SuspiciousSystemArraycopy")
     private String[] buildPage(int pageNumber) {
         String[] returnString = new String[this.sizeOfPage];
         int currentIndex = 0;
