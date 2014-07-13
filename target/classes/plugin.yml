@@ -1,6 +1,6 @@
 name: PhaetonEssentials
 main: co.phaeton.trinitek.phaetonessentials.Main
-version: 0.5.6
+version: 0.5.8
 description: Provides custom administrative services and generic commands
 author: Trinitek
 depend: [PermissionsEx]
@@ -53,6 +53,11 @@ commands:
         usage: "Usage: /<command> [list]"
         permission: phaetonessentials.afk
         permission-message: You don't have permission to do that!
+    testPageBuilder:
+        description: Test the PageBuilder class
+        usage: "Usage: /<command>"
+        permission: phaetonessentials.testPageBuilder
+        permission-message: You don't have permission to do that!
 
 permissions:
     phaetonessentials.*:
@@ -70,6 +75,7 @@ permissions:
             phaetonessentials.tp.back.list: true
             phaetonessentials.tp.back.listplayer: true
             phaetonessentials.afk: true
+            phaetonessentials.testpagebuilder: true
     phaetonessentials.tp.*:
         description: Gives access to all teleportation commands
         children:
@@ -133,3 +139,6 @@ permissions:
     phaetonessentials.afk:
         description: Allows you to toggle your AFK status
         default: true
+    phaetonessentials.testpagebuilder:
+        description: Allows you to test the PageBuilder class
+        default: op

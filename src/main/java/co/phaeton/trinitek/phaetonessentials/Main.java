@@ -72,7 +72,7 @@ public final class Main extends JavaPlugin implements Listener {
                 return TeleportCommandHandler.TeleportCommand(cmdSender, command, args, this.teleportHandler);
             case "afk":
                 return this.afkHandler.processCommand(cmdSender, args);
-            case "testPageBuilder":
+            case "testpagebuilder":
                 new PageBuilderTester(cmdSender);
                 return true;
             default:
