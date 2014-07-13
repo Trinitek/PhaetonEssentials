@@ -54,9 +54,11 @@ public class PageBuilder {
      * Adjust all the object's variables to account for changes in the size of the message's string arrays
      */
     private void adjustPageSize() {
-        int headerLength = this.header.length;
-        int bodyLength = this.body.length;
-        int footerLength = this.footer.length;
+        int headerLength = 0, bodyLength = 0, footerLength = 0;
+
+        if (this.header != null) headerLength = this.header.length;
+        if (this.body != null) bodyLength = this.body.length;
+        if (this.footer != null) footerLength = this.footer.length;
 
         // If the number of header and footer strings alone hits the page size limit, size accordingly
         if (headerLength + footerLength >= DEFAULT_PAGE_SIZE) {
