@@ -99,11 +99,11 @@ public class PageBuilder {
 
         // Append the body
         int bodyIndex = pageNumber * this.numberOfBodyLinesPerPage - this.numberOfBodyLinesPerPage;
-        int bodyLinesToShow;
 
         // If the body array has less than numberOfBodyLinesPerPage left, then only append the remaining strings
-        if ((this.body.length - bodyIndex + 1 < this.numberOfBodyLinesPerPage))
-            bodyLinesToShow = this.body.length - bodyIndex + 1;
+        int bodyLinesToShow;
+        if (this.body.length - bodyIndex + 1 < this.numberOfBodyLinesPerPage)
+            bodyLinesToShow = this.body.length - bodyIndex;
         else
             bodyLinesToShow = this.numberOfBodyLinesPerPage;
         System.arraycopy(this.body, bodyIndex, returnString, currentIndex, bodyLinesToShow);
