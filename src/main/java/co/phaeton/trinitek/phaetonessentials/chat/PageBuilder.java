@@ -108,6 +108,8 @@ public class PageBuilder {
             bodyLinesToShow = this.numberOfBodyLinesPerPage;
         System.arraycopy(this.body, bodyIndex, returnString, currentIndex, bodyLinesToShow);
 
+        currentIndex += bodyLinesToShow;
+
         // Append the footer
         System.arraycopy(this.footer, 0, returnString, currentIndex, this.footer.length);
 

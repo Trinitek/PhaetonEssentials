@@ -1,6 +1,6 @@
 name: PhaetonEssentials
 main: co.phaeton.trinitek.phaetonessentials.Main
-version: 0.5.10
+version: 0.5.11
 description: Provides custom administrative services and generic commands
 author: Trinitek
 depend: [PermissionsEx]
