@@ -127,11 +127,7 @@ public class PageBuilder {
      * @param pageNumber - page number to build and send
      */
     public void showPage(CommandSender commandSender, int pageNumber) {
-        //commandSender.sendMessage(buildPage(pageNumber));
-        String[] list = buildPage(pageNumber);
-        commandSender.sendMessage("PAGE=" + pageNumber);
-        commandSender.sendMessage("LENGTH=" + list.length);
-        commandSender.sendMessage(list);
+        commandSender.sendMessage(buildPage(pageNumber));
     }
 
 }

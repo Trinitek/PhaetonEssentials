@@ -1,6 +1,5 @@
 package co.phaeton.trinitek.phaetonessentials;
 
-import co.phaeton.trinitek.phaetonessentials.chat.PageBuilderTester;
 import co.phaeton.trinitek.phaetonessentials.generic.AfkHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -72,9 +71,6 @@ public final class Main extends JavaPlugin implements Listener {
                 return TeleportCommandHandler.TeleportCommand(cmdSender, command, args, this.teleportHandler);
             case "afk":
                 return this.afkHandler.processCommand(cmdSender, args);
-            case "testpagebuilder":
-                new PageBuilderTester(cmdSender);
-                return true;
             default:
                 // no valid command entered, display 'Usage:' message
                 return false;
