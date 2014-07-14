@@ -86,28 +86,33 @@ public class PageBuilder {
      * @return String array of the page's contents
      */
     public String[] buildPage(int pageNumber) {
-        String[] returnString = new String[this.sizeOfPage];
-        int currentIndex = 0;
 
         // If the page number is out of range, then set it to either the first or last page
         if (0 > pageNumber) pageNumber = 0;
         else if (pageNumber > this.numberOfPages) pageNumber = this.numberOfPages;
+
+        // Calculate the number of body lines to show to find out how large the page should be
+        int bodyIndex = pageNumber * this.numberOfBodyLinesPerPage - this.numberOfBodyLinesPerPage;
+
+        int bodyLinesToShow;
+        if (this.body.length - bodyIndex + 1 < this.numberOfBodyLinesPerPage)
+            bodyLinesToShow = this.body.length - bodyIndex;
+        else
+            bodyLinesToShow = this.numberOfBodyLinesPerPage;
+
+        // Initialize the destination string array
+        String[] returnString;
+        if (bodyLinesToShow < DEFAULT_PAGE_SIZE) returnString = new String[bodyLinesToShow + this.header.length + this.footer.length];
+        else returnString = new String[DEFAULT_PAGE_SIZE];
+
+        int currentIndex = 0;
 
         // Append the header
         System.arraycopy(this.header, 0, returnString, currentIndex, this.header.length);
         currentIndex += this.header.length;
 
         // Append the body
-        int bodyIndex = pageNumber * this.numberOfBodyLinesPerPage - this.numberOfBodyLinesPerPage;
-
-        // If the body array has less than numberOfBodyLinesPerPage left, then only append the remaining strings
-        int bodyLinesToShow;
-        if (this.body.length - bodyIndex + 1 < this.numberOfBodyLinesPerPage)
-            bodyLinesToShow = this.body.length - bodyIndex;
-        else
-            bodyLinesToShow = this.numberOfBodyLinesPerPage;
         System.arraycopy(this.body, bodyIndex, returnString, currentIndex, bodyLinesToShow);
-
         currentIndex += bodyLinesToShow;
 
         // Append the footer
@@ -122,7 +127,10 @@ public class PageBuilder {
      * @param pageNumber - page number to build and send
      */
     public void showPage(CommandSender commandSender, int pageNumber) {
-        commandSender.sendMessage(buildPage(pageNumber));
+        //commandSender.sendMessage(buildPage(pageNumber));
+        String[] list = buildPage(pageNumber);
+        commandSender.sendMessage("LENGTH=" + list.length);
+        commandSender.sendMessage(list);
     }
 
 }
