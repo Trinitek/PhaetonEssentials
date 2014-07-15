@@ -82,6 +82,11 @@ public class PageBuilder {
     /**
      * Builds a page of information using the object's header, body, and footer in a form that can be displayed to a
      * chat console.
+     *
+     * Tries to fit the given header and footer strings into the default page size, and allocates the remaining lines
+     * to the body strings. If the header and footer strings combined matches or exceeds the default page size, the
+     * page size is adjusted accordingly to fit both, in addition to one body string.
+     *
      * @param pageNumber - page number to generate
      * @return String array of the page's contents
      */
