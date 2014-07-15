@@ -77,4 +77,26 @@ public class DateMath {
         return getAbsoluteSecondDifference(timeA, timeB) % 60;
     }
 
+    /**
+     * Get a string representation of the difference between two times, represented in the format "d#h#m#s#"
+     * @param timeA time to compare to in milliseconds
+     * @param timeB time to compare with in milliseconds
+     * @return string representation
+     */
+    public static String differenceToString(long timeA, long timeB) {
+        String returnString = "";
+        int daysAgo = getDayDifference(timeA, timeB);
+        int hoursAgo = getHourDifference(timeA, timeB);
+        int minutesAgo = getMinuteDifference(timeA, timeB);
+        int secondsAgo = getSecondDifference(timeA, timeB);
+
+        // Append each value if it is not 0, but always append the seconds
+        if (daysAgo != 0) returnString = returnString.concat(daysAgo + "d");
+        if (hoursAgo != 0) returnString = returnString.concat(hoursAgo + "h");
+        if (minutesAgo != 0) returnString = returnString.concat(minutesAgo + "m");
+        returnString = returnString.concat(secondsAgo + "s");
+
+        return returnString;
+    }
+
 }
