@@ -1,5 +1,6 @@
 package co.phaeton.trinitek.phaetonessentials.chat;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
 public class PageBuilder {
@@ -107,10 +108,20 @@ public class PageBuilder {
 
         // Initialize the destination string array
         String[] returnString;
-        if (bodyLinesToShow < DEFAULT_PAGE_SIZE) returnString = new String[bodyLinesToShow + this.header.length + this.footer.length];
-        else returnString = new String[DEFAULT_PAGE_SIZE];
+        if (bodyLinesToShow < DEFAULT_PAGE_SIZE - this.header.length - this.footer.length)
+            returnString = new String[bodyLinesToShow + this.header.length + this.footer.length];
+        else
+            returnString = new String[DEFAULT_PAGE_SIZE];
 
         int currentIndex = 0;
+
+        Bukkit.getLogger().info("pageNumber=" + pageNumber);
+        Bukkit.getLogger().info("bodyIndex=" + bodyIndex);
+        Bukkit.getLogger().info("bodyLinesToShow=" + bodyLinesToShow);
+        Bukkit.getLogger().info("this.numberOfPages=" + this.numberOfPages);
+        Bukkit.getLogger().info("this.numberOfBodyLinesPerPage=" + this.numberOfBodyLinesPerPage);
+        Bukkit.getLogger().info("this.body.length=" + this.body.length);
+        Bukkit.getLogger().info("returnString.length=" + returnString.length);
 
         // Append the header
         System.arraycopy(this.header, 0, returnString, currentIndex, this.header.length);
