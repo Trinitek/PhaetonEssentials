@@ -44,7 +44,7 @@ commands:
         
     back:
         description: Go back to your previous location
-        usage: "Usage: /<command> [list] [<pageNumber> [playerName]]"
+        usage: "Usage: /<command> [<list> [playerName] [pageNumber]]"
         permission: phaetonessentials.tp.back
         permission-message: You don't have permission to do that!
 
