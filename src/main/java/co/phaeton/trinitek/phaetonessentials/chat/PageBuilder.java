@@ -128,8 +128,8 @@ public class PageBuilder {
 
     /**
      * Builds and sends a specified page to the given CommandSender
-     * @param commandSender - person to whom the message shall be sent
-     * @param pageNumber - page number to build and send
+     * @param commandSender
+     * @param pageNumber
      */
     public void showPage(CommandSender commandSender, int pageNumber) {
         commandSender.sendMessage(buildPage(pageNumber));
