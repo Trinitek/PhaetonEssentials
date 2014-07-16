@@ -87,6 +87,6 @@ public class TeleportHistoryHandler {
 
         // Sort the list from newest to oldest
         Collections.reverse(historyList);
-        return (String[])historyList.toArray();
+        return historyList.toArray(new String[historyList.size()]);
     }
 }
