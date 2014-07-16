@@ -77,7 +77,7 @@ public class PageBuilder {
 
         // Calculate the number of pages
         this.numberOfPages = bodyLength / this.numberOfBodyLinesPerPage;
-        if (bodyLength % this.numberOfBodyLinesPerPage > 0) this.numberOfPages++;
+        if (bodyLength % this.numberOfBodyLinesPerPage > 0 || bodyLength == 0) this.numberOfPages++;
     }
 
     /**
@@ -94,8 +94,10 @@ public class PageBuilder {
     public String[] buildPage(int pageNumber) {
 
         // If the page number is out of range, then set it to either the first or last page
-        if (0 > pageNumber) pageNumber = 0;
-        else if (pageNumber > this.numberOfPages) pageNumber = this.numberOfPages;
+        if (pageNumber < 1)
+            pageNumber = 1;
+        else if (pageNumber > this.numberOfPages)
+            pageNumber = this.numberOfPages;
 
         // Calculate the number of body lines to show to find out how large the page should be
         int bodyIndex = pageNumber * this.numberOfBodyLinesPerPage - this.numberOfBodyLinesPerPage;
