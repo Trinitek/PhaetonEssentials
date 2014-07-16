@@ -43,10 +43,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plugin.yml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="plugin.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4257603" vertical-offset="561" max-vertical-offset="2397">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2397">
               <caret line="47" column="45" selection-start-line="47" selection-start-column="45" selection-end-line="47" selection-end-column="45" />
               <folding />
             </state>
@@ -66,9 +66,22 @@
       <file leaf-file-name="TeleportCommandHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportCommandHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1615" max-vertical-offset="2448">
-              <caret line="105" column="7" selection-start-line="105" selection-start-column="7" selection-end-line="105" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2072" max-vertical-offset="2618">
+              <caret line="146" column="78" selection-start-line="146" selection-start-column="78" selection-end-line="146" selection-end-column="78" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PageBuilder.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/chat/PageBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6849817" vertical-offset="1989" max-vertical-offset="2584">
+              <caret line="139" column="30" selection-start-line="139" selection-start-column="30" selection-end-line="139" selection-end-column="30" />
+              <folding>
+                <element signature="e#5215#5216#0" expanded="true" />
+                <element signature="e#5256#5257#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -76,8 +89,8 @@
       <file leaf-file-name="TeleportHistoryHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportHistoryHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1035" max-vertical-offset="1581">
-              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="967" max-vertical-offset="1564">
+              <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -101,11 +114,11 @@
         <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/chat/PageBuilderTester.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/chat/PageBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/generic/DateMath.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportHistoryHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportCommandHandler.java" />
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportHistoryHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/chat/PageBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportCommandHandler.java" />
       </list>
     </option>
   </component>
@@ -1130,13 +1143,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/chat/PageBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5670498" vertical-offset="1183" max-vertical-offset="2448">
-          <caret line="87" column="85" selection-start-line="87" selection-start-column="85" selection-end-line="87" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1564">
@@ -1153,27 +1159,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportHistoryHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1035" max-vertical-offset="1581">
-          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2397">
+          <caret line="47" column="45" selection-start-line="47" selection-start-column="45" selection-end-line="47" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportCommandHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1615" max-vertical-offset="2448">
-          <caret line="105" column="7" selection-start-line="105" selection-start-column="7" selection-end-line="105" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2072" max-vertical-offset="2618">
+          <caret line="146" column="78" selection-start-line="146" selection-start-column="78" selection-end-line="146" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportHistoryHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4257603" vertical-offset="561" max-vertical-offset="2397">
-          <caret line="47" column="45" selection-start-line="47" selection-start-column="45" selection-end-line="47" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="967" max-vertical-offset="1564">
+          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/chat/PageBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6849817" vertical-offset="1989" max-vertical-offset="2584">
+          <caret line="139" column="30" selection-start-line="139" selection-start-column="30" selection-end-line="139" selection-end-column="30" />
+          <folding>
+            <element signature="e#5215#5216#0" expanded="true" />
+            <element signature="e#5256#5257#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

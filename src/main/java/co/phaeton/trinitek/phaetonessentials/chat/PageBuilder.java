@@ -135,4 +135,12 @@ public class PageBuilder {
         commandSender.sendMessage(buildPage(pageNumber));
     }
 
+    /**
+     * Get the number of pages in the PageBuilder object
+     * @return number of pages
+     */
+    public int getNumberOfPages() {
+        return this.numberOfPages;
+    }
+
 }
