@@ -1,9 +1,8 @@
 package co.phaeton.trinitek.phaetonessentials.teleport;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
+import co.phaeton.trinitek.phaetonessentials.generic.DateMath;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -13,7 +12,7 @@ public class TeleportHistoryHandler {
 
 	/**
 	 * Assign a new teleport history listing for the given Player
-	 * @param player - Player that the list is to be assigned to
+	 * @param player Player that the list is to be assigned to
      * @return false if player's list already exists
 	 */
 	public static boolean create(Player player) {
@@ -23,8 +22,8 @@ public class TeleportHistoryHandler {
 	
 	/**
 	 * Assign a given teleport history listing for the given Player
-	 * @param player - Player that the list is to be assigned to
-	 * @param historyList - ArrayList of TeleportHistory objects to assign to the Player
+	 * @param player Player that the list is to be assigned to
+	 * @param historyList ArrayList of TeleportHistory objects to assign to the Player
      * @return false if player's list already exists
 	 */
 	public static boolean create(Player player, ArrayList<TeleportHistory> historyList) {
@@ -38,8 +37,8 @@ public class TeleportHistoryHandler {
 	
 	/**
 	 * Add a new TeleportHistory entry to the given Player's history list
-	 * @param player - Player that holds the list to be modified
-	 * @param newEntry - New TeleportHistory entry to be added
+	 * @param player Player that holds the list to be modified
+	 * @param newEntry New TeleportHistory entry to be added
 	 */
 	public static void add(Player player, TeleportHistory newEntry) {
 		playerTeleportList.get(player).add(newEntry);
@@ -48,7 +47,7 @@ public class TeleportHistoryHandler {
 	
 	/**
 	 * Get the list of the specified Player's TeleportHistory entries
-	 * @param player - Player that holds the list to be retrieved
+	 * @param player Player that holds the list to be retrieved
 	 * @return ArrayList of TeleportHistory elements
 	 */
 	public static ArrayList<TeleportHistory> getEntry(Player player) {
@@ -63,4 +62,32 @@ public class TeleportHistoryHandler {
         Bukkit.getServer().getLogger().info("[PhaetonEssentials] " + player.getPlayerListName() + " removed from TeleportHistory hashmap");
 		playerTeleportList.remove(player);
 	}
+
+    /**
+     * Get an array containing string representations of all of the TeleportHistory elements associated with the
+     * provided player
+     * @param player Player that holds the list to be retrieved
+     * @return array of Strings
+     */
+    public static String[] historyListToString(Player player) {
+        long now = Calendar.getInstance().getTimeInMillis();
+        ArrayList<String> historyList = new ArrayList<>();
+        String entry;
+
+        for (TeleportHistory teleportHistory : playerTeleportList.get(player)) {
+            //TODO
+            entry = DateMath.differenceToString(now, teleportHistory.getTimestamp().getTimeInMillis()) + " ago - ";
+            if (teleportHistory.getDirection() == TeleportDirection.OUTGOING) entry = entry.concat("teleported away from ");
+            else entry = entry.concat("teleported to ");
+            entry = entry.concat
+                    (teleportHistory.getLocation().getBlockX() + ", " +
+                    teleportHistory.getLocation().getBlockY() + ", " +
+                    teleportHistory.getLocation().getBlockZ());
+            historyList.add(entry);
+        }
+
+        // Sort the list from newest to oldest
+        Collections.reverse(historyList);
+        return (String[])historyList.toArray();
+    }
 }
