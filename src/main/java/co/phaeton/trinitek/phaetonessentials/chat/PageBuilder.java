@@ -117,14 +117,6 @@ public class PageBuilder {
 
         int currentIndex = 0;
 
-        Bukkit.getLogger().info("pageNumber=" + pageNumber);
-        Bukkit.getLogger().info("bodyIndex=" + bodyIndex);
-        Bukkit.getLogger().info("bodyLinesToShow=" + bodyLinesToShow);
-        Bukkit.getLogger().info("this.numberOfPages=" + this.numberOfPages);
-        Bukkit.getLogger().info("this.numberOfBodyLinesPerPage=" + this.numberOfBodyLinesPerPage);
-        Bukkit.getLogger().info("this.body.length=" + this.body.length);
-        Bukkit.getLogger().info("returnString.length=" + returnString.length);
-
         // Append the header
         System.arraycopy(this.header, 0, returnString, currentIndex, this.header.length);
         currentIndex += this.header.length;
