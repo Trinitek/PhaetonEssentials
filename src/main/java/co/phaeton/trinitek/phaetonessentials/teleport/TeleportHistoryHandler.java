@@ -4,6 +4,7 @@ import java.util.*;
 
 import co.phaeton.trinitek.phaetonessentials.generic.DateMath;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class TeleportHistoryHandler {
@@ -76,14 +77,20 @@ public class TeleportHistoryHandler {
         int index = playerTeleportList.get(player).size() - 1;
 
         for (TeleportHistory teleportHistory : playerTeleportList.get(player)) {
-            entry = index + " : "; index--;
-            entry = entry.concat(DateMath.differenceToString(now, teleportHistory.getTimestamp().getTimeInMillis()) + " ago - ");
-            if (teleportHistory.getDirection() == TeleportDirection.OUTGOING) entry = entry.concat("teleported away from ");
-            else entry = entry.concat("teleported to ");
+            entry = ChatColor.YELLOW + "" + index + ChatColor.RESET + " : "; index--;
             entry = entry.concat
-                    (teleportHistory.getLocation().getBlockX() + ", " +
+                    (ChatColor.GRAY + "" +
+                    DateMath.differenceToString(now, teleportHistory.getTimestamp().getTimeInMillis()) + " ago" +
+                    ChatColor.RESET + " - ");
+            if (teleportHistory.getDirection() == TeleportDirection.OUTGOING) entry = entry.concat("from ");
+            else entry = entry.concat("to ");
+            entry = entry.concat
+                    ("" + ChatColor.DARK_AQUA +
+                    teleportHistory.getLocation().getBlockX() + ", " +
                     teleportHistory.getLocation().getBlockY() + ", " +
-                    teleportHistory.getLocation().getBlockZ());
+                    teleportHistory.getLocation().getBlockZ() +
+                    " " + ChatColor.RESET);
+            entry = entry.concat("in world " + ChatColor.DARK_AQUA + teleportHistory.getLocation().getWorld().getName() + ChatColor.RESET);
             historyList.add(entry);
         }
 
