@@ -73,7 +73,7 @@ public class TeleportHistoryHandler {
         long now = Calendar.getInstance().getTimeInMillis();
         ArrayList<String> historyList = new ArrayList<>();
         String entry;
-        int index = playerTeleportList.size();
+        int index = playerTeleportList.get(player).size() - 1;
 
         for (TeleportHistory teleportHistory : playerTeleportList.get(player)) {
             entry = index + " : "; index--;
