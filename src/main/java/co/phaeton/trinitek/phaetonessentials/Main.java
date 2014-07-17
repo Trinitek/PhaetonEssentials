@@ -29,7 +29,7 @@ public final class Main extends JavaPlugin implements Listener {
         // Register event listeners
         getServer().getPluginManager().registerEvents(this, this);
 
-		this.teleportHandler = new TeleportHandler();
+		this.teleportHandler = new TeleportHandler(this);
         this.afkHandler = new AfkHandler(this);
 
 		// Associate a new TeleportHistory list for each online Player

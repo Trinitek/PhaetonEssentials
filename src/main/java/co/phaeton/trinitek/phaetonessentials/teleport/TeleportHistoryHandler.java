@@ -73,9 +73,11 @@ public class TeleportHistoryHandler {
         long now = Calendar.getInstance().getTimeInMillis();
         ArrayList<String> historyList = new ArrayList<>();
         String entry;
+        int index = 0;
 
         for (TeleportHistory teleportHistory : playerTeleportList.get(player)) {
-            entry = DateMath.differenceToString(now, teleportHistory.getTimestamp().getTimeInMillis()) + " ago - ";
+            entry = index + " : "; index++;
+            entry = entry.concat(DateMath.differenceToString(now, teleportHistory.getTimestamp().getTimeInMillis()) + " ago - ");
             if (teleportHistory.getDirection() == TeleportDirection.OUTGOING) entry = entry.concat("teleported away from ");
             else entry = entry.concat("teleported to ");
             entry = entry.concat

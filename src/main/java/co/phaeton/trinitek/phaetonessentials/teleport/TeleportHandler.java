@@ -2,19 +2,36 @@ package co.phaeton.trinitek.phaetonessentials.teleport;
 
 import java.util.ArrayList;
 
+import co.phaeton.trinitek.phaetonessentials.Main;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerTeleportEvent;
 
-public class TeleportHandler {
-	
+public class TeleportHandler implements Listener{
+
 	private ArrayList<TeleportRequest> requestQueue;
 	
-	public TeleportHandler() {
+	public TeleportHandler(Main plugin) {
+        // Register the event listener
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+
 		// dynamically expanding array of TeleportRequests
 		this.requestQueue = new ArrayList<>();
 	}
 
+    @EventHandler
+    public void onPlayerTeleport(PlayerTeleportEvent event) {
+        // If the player teleports, then log the source and destination locations
+        Player player = event.getPlayer();
+        Location from = event.getFrom();
+        Location to = event.getTo();
+        TeleportHistoryHandler.add(player, new TeleportHistory(from, TeleportDirection.OUTGOING));
+        TeleportHistoryHandler.add(player, new TeleportHistory(to, TeleportDirection.INCOMING));
+    }
 	
 	/**
 	 * Get the number of currently open requests
@@ -110,16 +127,16 @@ public class TeleportHandler {
 
                 if (request.getRequestType()) { // 'tpa' - sender >> recipient
                     // write the teleport record to the sender's history
-                    TeleportHistoryHandler.add(requestSender, new TeleportHistory(requestSender.getLocation(), TeleportDirection.OUTGOING));
-                    TeleportHistoryHandler.add(requestSender, new TeleportHistory(requestRecipient.getLocation(), TeleportDirection.INCOMING));
+                    //TeleportHistoryHandler.add(requestSender, new TeleportHistory(requestSender.getLocation(), TeleportDirection.OUTGOING));
+                    //TeleportHistoryHandler.add(requestSender, new TeleportHistory(requestRecipient.getLocation(), TeleportDirection.INCOMING));
 
                     // and teleport
                     requestSender.teleport(requestRecipient);
 
                 } else { // 'tphere' - sender << recipient
                     // write the teleport record to the recipient's history
-                    TeleportHistoryHandler.add(requestRecipient, new TeleportHistory(requestRecipient.getLocation(), TeleportDirection.OUTGOING));
-                    TeleportHistoryHandler.add(requestRecipient, new TeleportHistory(requestSender.getLocation(), TeleportDirection.INCOMING));
+                    //TeleportHistoryHandler.add(requestRecipient, new TeleportHistory(requestRecipient.getLocation(), TeleportDirection.OUTGOING));
+                    //TeleportHistoryHandler.add(requestRecipient, new TeleportHistory(requestSender.getLocation(), TeleportDirection.INCOMING));
 
                     // and teleport
                     requestRecipient.teleport(requestSender);
@@ -170,7 +187,7 @@ public class TeleportHandler {
 				Player requestSender = request.getSender();
 				Player requestRecipient = request.getRecipient();
 				
-				// send each o f them messages saying that the request was cancelled
+				// send each of them messages saying that the request was cancelled
 				requestSender.sendMessage(ChatColor.RED + "Your teleport request to " + requestRecipient.getName() + " has been cancelled");
 				requestRecipient.sendMessage(ChatColor.RED + requestSender.getName() + " cancelled the teleport request");
 				
@@ -184,5 +201,13 @@ public class TeleportHandler {
 		// otherwise, the sender must not have sent a request
 		commandSender.sendMessage(ChatColor.RED + "You do not have any pending outgoing requests");
 	}
+/*
+    public static boolean teleport(Entity source, Entity destination, TeleportReason reason) {
+        return source.teleport(destination, PlayerTeleportEvent.TeleportCause.UNKNOWN);
+    }
 
+    public static boolean teleport(Entity source, Location destination, TeleportReason reason) {
+        return source.teleport(destination, PlayerTeleportEvent.TeleportCause.UNKNOWN);
+    }
+*/
 }
