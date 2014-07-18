@@ -6,7 +6,7 @@
 
     <groupId>co.phaeton.trinitek</groupId>
     <artifactId>phaetonessentials</artifactId>
-    <version>0.6.15</version>
+    <version>0.6.16</version>
 
     <build>
         <plugins>

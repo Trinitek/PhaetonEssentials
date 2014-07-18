@@ -131,6 +131,14 @@ public class TeleportCommandHandler {
                     // Only a Player can access his own teleport history
                     if (Main.denyConsoleSender(commandSender)) return true;
 
+                    // Requires permission to list the player's own teleport history
+                    if (commandSender instanceof Player) {
+                        if (!PermissionsEx.getUser((Player) commandSender).has("phaetonessentials.tp.back.list")) {
+                            commandSender.sendMessage(ChatColor.RED + "You do not have permission to see your own teleport history");
+                            return true;
+                        }
+                    }
+
                     // Display to the command sender the first page of his own teleport history list
                     showTeleportHistoryList(commandSender, (Player)commandSender, 1, false);
                     return true;
@@ -148,6 +156,16 @@ public class TeleportCommandHandler {
                         return true;
                     } catch (NumberFormatException e) {
                         // If the argument could not be parsed as an integer, then try to match it to a player's name
+
+                        // Requires permission to look at another player's teleport history
+                        if (commandSender instanceof Player) {
+                            if (!PermissionsEx.getUser((Player) commandSender).has("phaetonessentials.tp.back.listplayer")) {
+                                commandSender.sendMessage(ChatColor.RED + "You do not have permission to see the teleport history of other players");
+                                return true;
+                            }
+                        }
+
+                        // Match the argument to a player's name
                         Player player = Bukkit.getServer().getPlayer(args[1]);
                         if (player == null) {
                             // If the player does not exist, then say that the player is not online
@@ -180,6 +198,15 @@ public class TeleportCommandHandler {
             // Check for an integer, which will be the number of teleportation steps to backtrack
             else try {
                 int backtrack = Integer.parseInt(args[0]);
+
+                // Requires permission to specify a backtrack number
+                if (commandSender instanceof Player) {
+                    if (!PermissionsEx.getUser((Player) commandSender).has("phaetonessentials.tp.back.specify")) {
+                        commandSender.sendMessage(ChatColor.RED + "You do not have permission to backtrack by a specific number");
+                        return true;
+                    }
+                }
+
                 return teleportBack(commandSender, backtrack);
             } catch (NumberFormatException e) {
                 // If parsing the argument as an integer fails, then the command syntax was not correct
