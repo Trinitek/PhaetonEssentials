@@ -57,7 +57,7 @@ public class TeleportHistoryHandler {
 	
 	/**
 	 * Remove the teleport history listing for the given Player
-	 * @param player - Player that holds the list to be modified
+	 * @param player Player that holds the list to be modified
 	 */
 	public static void remove(Player player) {
         Bukkit.getServer().getLogger().info("[PhaetonEssentials] " + player.getPlayerListName() + " removed from TeleportHistory hashmap");

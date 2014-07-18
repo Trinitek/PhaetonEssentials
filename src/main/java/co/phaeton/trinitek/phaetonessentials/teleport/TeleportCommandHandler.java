@@ -3,11 +3,14 @@ package co.phaeton.trinitek.phaetonessentials.teleport;
 import co.phaeton.trinitek.phaetonessentials.chat.PageBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import co.phaeton.trinitek.phaetonessentials.Main;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
+
+import java.util.ArrayList;
 
 public class TeleportCommandHandler {
 	
@@ -177,15 +180,14 @@ public class TeleportCommandHandler {
             // Check for an integer, which will be the number of teleportation steps to backtrack
             else try {
                 int backtrack = Integer.parseInt(args[0]);
-                // TODO teleport player to that location in the teleport history list, where it says "teleported from"
-                return true;
+                return teleportBack(commandSender, backtrack);
             } catch (NumberFormatException e) {
                 // If parsing the argument as an integer fails, then the command syntax was not correct
                 return false;
             }
 		} else {
-            // If no arguments are specified, then backtrack by only one step
-            // TODO teleport player to the first location in the teleport history list, where it says "teleported from"
+            // If no arguments are specified, then backtrack by one step
+            return teleportBack(commandSender, 1);
         }
 		
 		return false;
@@ -209,5 +211,23 @@ public class TeleportCommandHandler {
             page.setFooter(new String[]{ChatColor.GRAY + "Page " + pageNumber + "/" + page.getNumberOfPages() + ", use \"/back list <pageNumber>\" for more"});
         page.showPage(commandSender, pageNumber);
     }
-	
+
+    /**
+     * Teleport the provided CommandSender to the nth position from the latest TeleportHistory entry's specified Location
+     * @param commandSender Player to teleport
+     * @param steps number of steps to backtrack
+     * @return true if successful
+     */
+    private static boolean teleportBack(CommandSender commandSender, int steps) {
+        // Only a Player can teleport to a previous location
+        if (Main.denyConsoleSender(commandSender)) return true;
+
+        Player player = (Player) commandSender;
+        ArrayList<TeleportHistory> historyList = TeleportHistoryHandler.getEntry(player);
+        int latestEntryIndex = historyList.size() - 1;
+        Location destination = historyList.get(latestEntryIndex - steps).getLocation();
+
+        player.teleport(destination);
+        return true;
+    }
 }

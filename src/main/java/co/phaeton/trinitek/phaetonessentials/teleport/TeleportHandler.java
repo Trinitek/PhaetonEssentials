@@ -201,13 +201,4 @@ public class TeleportHandler implements Listener{
 		// otherwise, the sender must not have sent a request
 		commandSender.sendMessage(ChatColor.RED + "You do not have any pending outgoing requests");
 	}
-/*
-    public static boolean teleport(Entity source, Entity destination, TeleportReason reason) {
-        return source.teleport(destination, PlayerTeleportEvent.TeleportCause.UNKNOWN);
-    }
-
-    public static boolean teleport(Entity source, Location destination, TeleportReason reason) {
-        return source.teleport(destination, PlayerTeleportEvent.TeleportCause.UNKNOWN);
-    }
-*/
 }
