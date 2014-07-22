@@ -3,6 +3,7 @@ package co.phaeton.trinitek.phaetonessentials.teleport;
 import java.util.ArrayList;
 
 import co.phaeton.trinitek.phaetonessentials.Main;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
@@ -29,8 +30,14 @@ public class TeleportHandler implements Listener{
         Player player = event.getPlayer();
         Location from = event.getFrom();
         Location to = event.getTo();
-        TeleportHistoryHandler.add(player, new TeleportHistory(from, TeleportDirection.OUTGOING));
-        TeleportHistoryHandler.add(player, new TeleportHistory(to, TeleportDirection.INCOMING));
+        PlayerTeleportEvent.TeleportCause cause = event.getCause();
+        Bukkit.getLogger().info(
+                "[PhaetonEssentials] PlayerTeleportEvent fired, player: " + player.getName() +
+                ", cause: " + cause.toString());
+        if (cause != PlayerTeleportEvent.TeleportCause.UNKNOWN) {
+            TeleportHistoryHandler.add(player, new TeleportHistory(from, TeleportDirection.OUTGOING));
+            TeleportHistoryHandler.add(player, new TeleportHistory(to, TeleportDirection.INCOMING));
+        }
     }
 	
 	/**

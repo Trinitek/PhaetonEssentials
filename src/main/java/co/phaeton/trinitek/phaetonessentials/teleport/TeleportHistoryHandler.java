@@ -43,7 +43,11 @@ public class TeleportHistoryHandler {
 	 */
 	public static void add(Player player, TeleportHistory newEntry) {
 		playerTeleportList.get(player).add(newEntry);
-        Bukkit.getServer().getLogger().info("[PhaetonEssentials] New TeleportHistory entry added for " + player.getPlayerListName());
+        Bukkit.getServer().getLogger().info(
+                "[PhaetonEssentials] TeleportHistory entry added: " +
+                player.getPlayerListName() + ", " +
+                newEntry.getLocation().getBlock().toString() + ", " +
+                newEntry.getDirection().toString());
 	}
 	
 	/**
