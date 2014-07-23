@@ -27,7 +27,7 @@ public class InventoryHandler {
         // If the inventoryHolder's name is empty, display the viewer's own Enderchest interface
         String inventoryHolderName = null;
         Player inventoryHolder;
-        if (args.length < 1) inventoryHolderName = args[0];
+        if (args.length >= 1) inventoryHolderName = args[0];
         if (inventoryHolderName == null) {
             inventoryHolder = (Player) viewer;
         } else {
@@ -71,7 +71,7 @@ public class InventoryHandler {
         // The inventory holder's name must be provided
         String inventoryHolderName = null;
         Player inventoryHolder;
-        if (args.length < 1) inventoryHolderName = args[0];
+        if (args.length >= 1) inventoryHolderName = args[0];
         if (inventoryHolderName == null) {
             viewer.sendMessage(ChatColor.RED + "Wrong number of arguments");
             return false;

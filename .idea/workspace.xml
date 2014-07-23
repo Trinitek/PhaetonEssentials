@@ -43,10 +43,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plugin.yml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="plugin.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.06148282" vertical-offset="0" max-vertical-offset="2907">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2907">
               <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
               <folding />
             </state>
@@ -56,8 +56,8 @@
       <file leaf-file-name="InventoryHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/generic/InventoryHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="895" max-vertical-offset="1989">
-              <caret line="63" column="32" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="181" max-vertical-offset="1989">
+              <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;method#openEnderChest#1;class#InventoryHandler#0" expanded="false" />
@@ -73,18 +73,18 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="790" max-vertical-offset="1445">
+            <state vertical-scroll-proportion="0.0" vertical-offset="586" max-vertical-offset="1445">
               <caret line="82" column="43" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TeleportHandler.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TeleportHandler.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1462">
-              <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.51519537" vertical-offset="443" max-vertical-offset="1666">
+              <caret line="58" column="7" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="7" />
               <folding>
                 <element signature="method#displayRequestList#0;class#TeleportHandler#0" expanded="false" />
                 <element signature="method#createRequest#0;class#TeleportHandler#0" expanded="false" />
@@ -96,21 +96,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TeleportHistoryHandler.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportHistoryHandler.java">
+      <file leaf-file-name="TeleportCommandHandler.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportCommandHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="833">
-              <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-              <folding>
-                <element signature="docComment;method#create#0;class#TeleportHistoryHandler#0" expanded="false" />
-                <element signature="method#create#0;class#TeleportHistoryHandler#0" expanded="false" />
-                <element signature="docComment;method#create#1;class#TeleportHistoryHandler#0" expanded="false" />
-                <element signature="docComment;method#add#0;class#TeleportHistoryHandler#0" expanded="false" />
-                <element signature="docComment;method#getEntry#0;class#TeleportHistoryHandler#0" expanded="false" />
-                <element signature="docComment;method#remove#0;class#TeleportHistoryHandler#0" expanded="false" />
-                <element signature="docComment;method#historyListToString#0;class#TeleportHistoryHandler#0" expanded="false" />
-                <element signature="method#historyListToString#0;class#TeleportHistoryHandler#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="1785" max-vertical-offset="4352">
+              <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -134,12 +125,12 @@
         <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/chat/PageBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportReason.java" />
         <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportCommandHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportHistoryHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/generic/InventoryHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/Main.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/generic/InventoryHandler.java" />
         <option value="$PROJECT_DIR$/src/main/resources/plugin.yml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportHandler.java" />
       </list>
     </option>
   </component>
@@ -612,7 +603,7 @@
     <property name="project.structure.side.proportion" value="0.35341832" />
     <property name="FullScreen" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="options.lastSelected" value="appearance" />
+    <property name="options.lastSelected" value="editor.preferences.appearance" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -797,7 +788,7 @@
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Documentation" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19193324" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" x="215" y="473" width="1003" height="246" />
+      <window_info id="Documentation" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19193324" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" x="215" y="473" width="1003" height="246" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -808,7 +799,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32764506" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27987897" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32764506" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32684284" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32764506" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27987897" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1223,23 +1214,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1462">
-          <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
-          <folding>
-            <element signature="method#displayRequestList#0;class#TeleportHandler#0" expanded="false" />
-            <element signature="method#createRequest#0;class#TeleportHandler#0" expanded="false" />
-            <element signature="method#acceptRequest#0;class#TeleportHandler#0" expanded="false" />
-            <element signature="method#denyRequest#0;class#TeleportHandler#0" expanded="false" />
-            <element signature="method#cancelRequest#0;class#TeleportHandler#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportHistoryHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="833">
+        <state vertical-scroll-proportion="0.787037" vertical-offset="119" max-vertical-offset="833">
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding>
             <element signature="docComment;method#create#0;class#TeleportHistoryHandler#0" expanded="false" />
@@ -1254,18 +1231,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportCommandHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9864603" vertical-offset="612" max-vertical-offset="4352">
-          <caret line="76" column="82" selection-start-line="76" selection-start-column="82" selection-end-line="76" selection-end-column="82" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="790" max-vertical-offset="1445">
+          <caret line="82" column="43" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/generic/InventoryHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="895" max-vertical-offset="1989">
-          <caret line="63" column="32" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="181" max-vertical-offset="1989">
+          <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;method#openEnderChest#1;class#InventoryHandler#0" expanded="false" />
@@ -1277,10 +1254,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportCommandHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="790" max-vertical-offset="1445">
-          <caret line="82" column="43" selection-start-line="82" selection-start-column="43" selection-end-line="82" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1785" max-vertical-offset="4352">
+          <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2907">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -1293,11 +1278,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.yml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/co/phaeton/trinitek/phaetonessentials/teleport/TeleportHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06148282" vertical-offset="0" max-vertical-offset="2907">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-          <folding />
+        <state vertical-scroll-proportion="0.51519537" vertical-offset="443" max-vertical-offset="1666">
+          <caret line="58" column="7" selection-start-line="58" selection-start-column="7" selection-end-line="58" selection-end-column="7" />
+          <folding>
+            <element signature="method#displayRequestList#0;class#TeleportHandler#0" expanded="false" />
+            <element signature="method#createRequest#0;class#TeleportHandler#0" expanded="false" />
+            <element signature="method#acceptRequest#0;class#TeleportHandler#0" expanded="false" />
+            <element signature="method#denyRequest#0;class#TeleportHandler#0" expanded="false" />
+            <element signature="method#cancelRequest#0;class#TeleportHandler#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
