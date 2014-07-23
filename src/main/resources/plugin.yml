@@ -1,6 +1,6 @@
 name: PhaetonEssentials
 main: co.phaeton.trinitek.phaetonessentials.Main
-version: 0.6.17
+version: 0.7.0
 description: Provides custom administrative services and generic commands
 author: Trinitek
 depend: [PermissionsEx]
@@ -8,50 +8,68 @@ depend: [PermissionsEx]
 commands:
     tpa:
         description: Request to teleport to a player
-        usage: "Usage: /<command> <player> [force]"
+        usage: "/<command> <player> [force]"
         permission: phaetonessentials.tp.tpa
         permission-message: You don't have permission to do that!
 
     tphere:
         description: Request a player teleport to you
-        usage: "Usage: /<command> <player> [force]"
+        usage: "/<command> <player> [force]"
         permission: phaetonessentials.tp.tphere
         permission-message: You don't have permission to do that!
 
     tpaccept:
         description: Accept a teleport request
-        usage: "Usage: /<command>"
+        usage: "/<command>"
         permission: phaetonessentials.tp.confirm.accept
         permission-message: You don't have permission to do that!
 
     tpdeny:
         description: Deny a teleport request
-        usage: "Usage: /<command>"
+        usage: "/<command>"
         permission: phaetonessentials.tp.confirm.deny
         permission-message: You don't have permission to do that!
         
     tplist:
         description: List all open teleport requests
-        usage: "Usage: /<command>"
+        usage: "/<command>"
         permission: phaetonessentials.tp.list
         permission-message: You don't have permission to do that!
         
     tpcancel:
         description: Cancel a teleport request
-        usage: "Usage: /<command>"
+        usage: "/<command>"
         permission: phaetonessentials.tp.cancel
         permission-message: You don't have permission to do that!
         
     back:
         description: Go back to your previous location
-        usage: "Usage: /<command> [numberOfLocations] or [<list> [playerName] [pageNumber]]"
+        usage: "/<command> [numberOfLocations] or [<list> [playerName] [pageNumber]]"
         permission: phaetonessentials.tp.back
         permission-message: You don't have permission to do that!
 
     afk:
         description: Toggle your AFK status or list the currently AFK players
-        usage: "Usage: /<command> [list]"
+        usage: "/<command> [list]"
         permission: phaetonessentials.afk
+        permission-message: You don't have permission to do that!
+
+    inventory:
+        description: View the inventory of the provided player
+        usage: "/<command> <player>"
+        permission: phaetonessentials.inventory
+        permission-message: You don't have permission to do that!
+
+    enderchest:
+        description: View the inventory of the Enderchest belonging to you or another player
+        usage: "/<command> [player]"
+        permission: phaetonessentials.enderchest
+        permission-message: You don't have permission to do that!
+
+    workbench:
+        description: View a workbench interface without having to place an actual crafting bench
+        usage: "/<command>"
+        permission: phaetonessentials.workbench
         permission-message: You don't have permission to do that!
 
 permissions:
@@ -70,6 +88,9 @@ permissions:
             phaetonessentials.tp.back.list: true
             phaetonessentials.tp.back.listplayer: true
             phaetonessentials.afk: true
+            phaetonessentials.inventory: true
+            phaetonessentials.enderchest: true
+            phaetonessentials.workbench: true
     phaetonessentials.tp.*:
         description: Gives access to all teleportation commands
         children:
@@ -133,3 +154,12 @@ permissions:
     phaetonessentials.afk:
         description: Allows you to toggle your AFK status
         default: true
+    phaetonessentials.inventory:
+        description: Allows you to view the inventory of another player
+        default: op
+    phaetonessentials.enderchest:
+        description: Allows you to view the inventory of an Enderchest belonging to you or another player
+        default: op
+    phaetonessentials.workbench:
+        description: Allows you to open a crafting bench interface without having to place one
+        default: op

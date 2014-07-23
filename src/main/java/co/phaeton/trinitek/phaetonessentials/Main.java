@@ -1,6 +1,7 @@
 package co.phaeton.trinitek.phaetonessentials;
 
 import co.phaeton.trinitek.phaetonessentials.generic.AfkHandler;
+import co.phaeton.trinitek.phaetonessentials.generic.InventoryHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -9,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import co.phaeton.trinitek.phaetonessentials.teleport.TeleportCommandHandler;
@@ -71,8 +73,14 @@ public final class Main extends JavaPlugin implements Listener {
                 return TeleportCommandHandler.TeleportCommand(cmdSender, command, args, this.teleportHandler);
             case "afk":
                 return this.afkHandler.processCommand(cmdSender, args);
+            case "enderchest":
+                return InventoryHandler.openEnderChest(cmdSender, args);
+            case "inventory":
+                return InventoryHandler.openPlayerInventory(cmdSender, args);
+            case "workbench":
+                return InventoryHandler.openWorkbench(cmdSender);
             default:
-                // no valid command entered, display 'Usage:' message
+                // no valid command entered
                 return false;
         }
 	}
