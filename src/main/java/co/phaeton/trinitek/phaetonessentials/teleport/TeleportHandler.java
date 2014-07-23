@@ -10,6 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
 public class TeleportHandler implements Listener{
@@ -38,6 +39,18 @@ public class TeleportHandler implements Listener{
             TeleportHistoryHandler.add(player, new TeleportHistory(from, TeleportDirection.OUTGOING));
             TeleportHistoryHandler.add(player, new TeleportHistory(to, TeleportDirection.INCOMING));
         }
+    }
+
+    @EventHandler
+    public void onPlayerRespawn(PlayerRespawnEvent event) {
+        // If the player respawns, then log the source and destination locations
+        Player player = event.getPlayer();
+        Location from = player.getLocation();
+        Location to = event.getRespawnLocation();
+        Bukkit.getLogger().info("[PhaetonEssentials PlayerRespawnEvent fired, player: " + player.getName());
+
+        TeleportHistoryHandler.add(player, new TeleportHistory(from, TeleportDirection.OUTGOING));
+        TeleportHistoryHandler.add(player, new TeleportHistory(to, TeleportDirection.INCOMING));
     }
 	
 	/**
