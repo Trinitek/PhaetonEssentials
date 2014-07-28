@@ -50,6 +50,9 @@ public class TeleportCommandHandler {
             case "tpcancel":
                 teleportHandler.cancelRequest(sender);
                 return true;
+            case "spawn":
+                sender.teleport(sender.getWorld().getSpawnLocation());
+                return true;
         }
 		
 		/*
