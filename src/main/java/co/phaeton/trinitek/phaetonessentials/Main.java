@@ -88,7 +88,7 @@ public final class Main extends JavaPlugin implements Listener {
 	
 	/**
 	 * Ensure that the sender did not issue the command from the console
-	 * @param cmdSender - entity that sent the command
+	 * @param cmdSender CommandSender that issued the command
 	 * @return true if sent from the console
 	 */
 	public static boolean denyConsoleSender(CommandSender cmdSender) {

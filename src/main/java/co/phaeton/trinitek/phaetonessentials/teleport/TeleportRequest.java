@@ -13,7 +13,7 @@ public class TeleportRequest {
 	
 	/**
 	 * Constructor for the TeleportRequest object
-	 * @param requestType - true if 'tpa', false if 'tphere'
+	 * @param requestType true if 'tpa', false if 'tphere'
 	 */
 	public TeleportRequest(boolean requestType, Player sender, Player recipient) {
 		this.requestType = requestType;

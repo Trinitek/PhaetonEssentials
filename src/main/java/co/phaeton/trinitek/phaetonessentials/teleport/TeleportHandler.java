@@ -63,7 +63,7 @@ public class TeleportHandler implements Listener{
 	
 	/**
 	 * Helper method for creating a formatted String representation of the type of request
-	 * @param request - TeleportRequest to process
+	 * @param request TeleportRequest to process
 	 * @return ">>" if 'tpa', or "<<" if 'tphere'
 	 */
 	private String requestTypeToString(TeleportRequest request) {
@@ -76,7 +76,7 @@ public class TeleportHandler implements Listener{
 	
 	/**
 	 * Send a list of the currently open requests to the specified CommandSender's chat
-	 * @param cmdSender - Entity that sent the command
+	 * @param cmdSender Entity that sent the command
 	 */
 	public void displayRequestList(CommandSender cmdSender) {
 		cmdSender.sendMessage(ChatColor.GRAY + "There are " + Integer.toString(getNumberOfOpenRequests()) + " open teleport requests");
@@ -90,10 +90,10 @@ public class TeleportHandler implements Listener{
 	
 	/**
 	 * Creates a TeleportRequest object and adds it to the queue
-	 * @param requestType - true if 'tpa', false if 'tphere'
-	 * @param sender - Player that sent the request
-	 * @param recipient - Player that received the request
-	 * @param overridePrompt - flag that determines if the request prompt should not be displayed
+	 * @param requestType true if 'tpa', false if 'tphere'
+	 * @param sender Player that sent the request
+	 * @param recipient Player that received the request
+	 * @param overridePrompt flag that determines if the request prompt should not be displayed
 	 */
 	public void createRequest(boolean requestType, Player sender, Player recipient, boolean overridePrompt) {
 		if (overridePrompt) {
@@ -131,7 +131,7 @@ public class TeleportHandler implements Listener{
 	
 	/**
 	 * Process the /tpaccept command. The sender of this command is the recipient of the request.
-	 * @param commandSender - Player that sent the command
+	 * @param commandSender Player that sent the command
 	 */
 	public void acceptRequest(Player commandSender) {
 		
@@ -175,7 +175,7 @@ public class TeleportHandler implements Listener{
 	
 	/**
 	 * Process the /tpdeny command. The sender of this command is the recipient of the request.
-	 * @param commandSender - Player that sent the command
+	 * @param commandSender Player that sent the command
 	 */
 	public void denyRequest(Player commandSender) {
 		
@@ -200,6 +200,10 @@ public class TeleportHandler implements Listener{
 		commandSender.sendMessage(ChatColor.RED + "There are no teleport requests waiting for you");
 	}
 
+    /**
+     * Process the /tpcancel command. The sender of this command is the recipient of the request.
+     * @param commandSender Player that sent the command
+     */
 	public void cancelRequest(Player commandSender) {
 		// file through the requestQueue and look for commandSender == requestSender
 		for (TeleportRequest request : requestQueue) {

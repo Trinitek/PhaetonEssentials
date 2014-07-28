@@ -15,8 +15,8 @@ public class TeleportHistory {
 	
 	/**
 	 * Constructor for the TeleportHistory object
-	 * @param location
-	 * @param direction - OUTGOING if the location was the point of departure, INCOMING if the location was the destination
+	 * @param newLocation location to document
+	 * @param newDirection OUTGOING if the location was the point of departure, INCOMING if the location was the destination
 	 */
 	public TeleportHistory(Location newLocation, TeleportDirection newDirection) {
 		this.location = newLocation;

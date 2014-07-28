@@ -29,7 +29,7 @@ public class AfkHandler implements Listener {
 
     /**
      * Sets the Player's AFK status to false whenever he interacts with an object in the game
-     * @param event - PlayerInteractEvent
+     * @param event PlayerInteractEvent
      */
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
@@ -38,7 +38,7 @@ public class AfkHandler implements Listener {
 
     /**
      * Sets the Player's AFK status to false whenever he moves to another location
-     * @param event - PlayerMoveEvent
+     * @param event PlayerMoveEvent
      */
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
@@ -49,8 +49,8 @@ public class AfkHandler implements Listener {
 
     /**
      * Process any additional arguments for this command
-     * @param commandSender - CommandSender that issued the command
-     * @param args - argument list
+     * @param commandSender CommandSender that issued the command
+     * @param args argument list
      * @return true if successful
      */
     public boolean processCommand(CommandSender commandSender, String[] args) {
@@ -76,8 +76,8 @@ public class AfkHandler implements Listener {
     /**
      * Toggle the AFK status for the given Player.
      * If the player is AFK, then set the flag to false. Otherwise, set the flag to true.
-     * @param commandSender - CommandSender object to apply AFK status to. Must be an instance of Player.
-     * @return - true if successful
+     * @param commandSender CommandSender object to apply AFK status to. Must be an instance of Player.
+     * @return true if successful
      */
     public boolean toggleAfk(CommandSender commandSender) {
         // This command can only be run by a player
@@ -92,8 +92,8 @@ public class AfkHandler implements Listener {
 
     /**
      * Set the AFK status for the given Player
-     * @param player - Player to set flag for
-     * @param flag - true if AFK, false if not
+     * @param player Player to set flag for
+     * @param flag true if AFK, false if not
      * @return true if successful
      */
     public boolean setAfk(Player player, boolean flag) {

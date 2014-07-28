@@ -1,6 +1,5 @@
 package co.phaeton.trinitek.phaetonessentials.chat;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
 public class PageBuilder {
@@ -26,7 +25,7 @@ public class PageBuilder {
 
     /**
      * Set the header to the given ArrayList of Strings
-     * @param stringList - array of Strings that constitute the header
+     * @param stringList array of Strings that constitute the header
      */
     public void setHeader(String[] stringList) {
         this.header = stringList;
@@ -35,7 +34,7 @@ public class PageBuilder {
 
     /**
      * Set the body to the given ArrayList of Strings
-     * @param stringList - array of Strings that constitute the header
+     * @param stringList array of Strings that constitute the header
      */
     public void setBody(String[] stringList) {
         this.body = stringList;
@@ -44,7 +43,7 @@ public class PageBuilder {
 
     /**
      * Set the footer to the given ArrayList of Strings
-     * @param stringList - array of Strings that constitute the footer
+     * @param stringList array of Strings that constitute the footer
      */
     public void setFooter(String[] stringList) {
         this.footer = stringList;
@@ -88,7 +87,7 @@ public class PageBuilder {
      * to the body strings. If the header and footer strings combined matches or exceeds the default page size, the
      * page size is adjusted accordingly to fit both, in addition to one body string.
      *
-     * @param pageNumber - page number to generate
+     * @param pageNumber page number to generate
      * @return String array of the page's contents
      */
     public String[] buildPage(int pageNumber) {
@@ -133,8 +132,8 @@ public class PageBuilder {
 
     /**
      * Builds and sends a specified page to the given CommandSender
-     * @param commandSender
-     * @param pageNumber
+     * @param commandSender CommandSender that issued the command
+     * @param pageNumber page number to generate
      */
     public void showPage(CommandSender commandSender, int pageNumber) {
         commandSender.sendMessage(buildPage(pageNumber));

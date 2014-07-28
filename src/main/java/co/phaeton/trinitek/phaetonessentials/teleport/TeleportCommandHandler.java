@@ -118,8 +118,8 @@ public class TeleportCommandHandler {
      * numberOfLocations is the number of steps to backtrack, where 1 would be the previous location, 2 would be the
      * location previous to that, and so forth.
      *
-     * @param commandSender - Player or console user that sent the command
-     * @param args - array of argument strings
+     * @param commandSender Player or console user that sent the command
+     * @param args array of argument strings
      * @return false if the syntax is incorrect
      */
 	private static boolean backCommand(CommandSender commandSender, String[] args) {
@@ -135,11 +135,9 @@ public class TeleportCommandHandler {
                     if (Main.denyConsoleSender(commandSender)) return true;
 
                     // Requires permission to list the player's own teleport history
-                    if (commandSender instanceof Player) {
-                        if (!PermissionsEx.getUser((Player) commandSender).has("phaetonessentials.tp.back.list")) {
-                            commandSender.sendMessage(ChatColor.RED + "You do not have permission to see your own teleport history");
-                            return true;
-                        }
+                    if (!PermissionsEx.getUser((Player) commandSender).has("phaetonessentials.tp.back.list")) {
+                        commandSender.sendMessage(ChatColor.RED + "You do not have permission to see your own teleport history");
+                        return true;
                     }
 
                     // Display to the command sender the first page of his own teleport history list
