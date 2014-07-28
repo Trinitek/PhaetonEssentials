@@ -1,6 +1,6 @@
 name: PhaetonEssentials
 main: co.phaeton.trinitek.phaetonessentials.Main
-version: 0.7.3
+version: 0.7.4
 description: Provides custom administrative services and generic commands
 author: Trinitek
 depend: [PermissionsEx]
@@ -74,7 +74,7 @@ commands:
 
     spawn:
         description: Teleport to the world spawn point
-        usage "/<command>"
+        usage: "/<command>"
         permission: phaetonessentials.spawn
         permission-message: You don't have permission to do that!
 
