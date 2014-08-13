@@ -252,8 +252,17 @@ public class TeleportCommandHandler {
 
         Player player = (Player) commandSender;
         ArrayList<TeleportHistory> historyList = TeleportHistoryHandler.getEntry(player);
-        int latestEntryIndex = historyList.size() - 1;
-        Location destination = historyList.get(latestEntryIndex - steps).getLocation();
+
+        // If the historyList is empty, silently fail the command
+        int latestEntryIndex;
+        if (historyList.size() == 0) return true;
+        else latestEntryIndex = historyList.size() - 1;
+
+        // If the step is out of range, silently fail the command
+        Location destination;
+        if (historyList.size() < latestEntryIndex - steps) return true;
+        else if (historyList.size() < steps + 1) return true;
+        else destination = historyList.get(latestEntryIndex - steps).getLocation();
 
         player.teleport(destination);
         return true;

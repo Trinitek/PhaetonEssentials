@@ -146,26 +146,16 @@ public class TeleportHandler implements Listener{
                 requestRecipient.sendMessage(ChatColor.YELLOW + "Request accepted. Teleporting...");
 
                 if (request.getRequestType()) { // 'tpa' - sender >> recipient
-                    // write the teleport record to the sender's history
-                    //TeleportHistoryHandler.add(requestSender, new TeleportHistory(requestSender.getLocation(), TeleportDirection.OUTGOING));
-                    //TeleportHistoryHandler.add(requestSender, new TeleportHistory(requestRecipient.getLocation(), TeleportDirection.INCOMING));
-
-                    // and teleport
                     requestSender.teleport(requestRecipient);
 
                 } else { // 'tphere' - sender << recipient
-                    // write the teleport record to the recipient's history
-                    //TeleportHistoryHandler.add(requestRecipient, new TeleportHistory(requestRecipient.getLocation(), TeleportDirection.OUTGOING));
-                    //TeleportHistoryHandler.add(requestRecipient, new TeleportHistory(requestSender.getLocation(), TeleportDirection.INCOMING));
-
-                    // and teleport
                     requestRecipient.teleport(requestSender);
-
-                    // and remove that request from the queue
-                    requestQueue.remove(request);
-
-                    return;
                 }
+
+                // remove that request from the queue
+                requestQueue.remove(request);
+
+                return;
             }
 		}
 		
