@@ -71,6 +71,7 @@ public final class Main extends JavaPlugin implements Listener {
             case "tpcancel":
             case "back":
             case "spawn":
+            case "home":
                 return TeleportCommandHandler.TeleportCommand(cmdSender, command, args, this.teleportHandler);
             case "afk":
                 return this.afkHandler.processCommand(cmdSender, args);

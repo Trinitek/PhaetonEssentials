@@ -1,6 +1,6 @@
 name: PhaetonEssentials
 main: co.phaeton.trinitek.phaetonessentials.Main
-version: 0.7.9
+version: 0.8.2
 description: Provides custom administrative services and generic commands
 author: Trinitek
 depend: [PermissionsEx]
@@ -78,6 +78,12 @@ commands:
         permission: phaetonessentials.spawn
         permission-message: You don't have permission to do that!
 
+    home:
+        description: Teleport to your bed
+        usage: "/<command>"
+        permission: phaetonessentials.home
+        permission-message: You don't have permission to do that!
+
 permissions:
     phaetonessentials.*:
         description: Gives access to all PhaetonEssentials commands
@@ -98,6 +104,7 @@ permissions:
             phaetonessentials.enderchest: true
             phaetonessentials.workbench: true
             phaetonessentials.spawn: true
+            phaetonessentials.home: true
     phaetonessentials.tp.*:
         description: Gives access to all teleportation commands
         children:
@@ -172,4 +179,7 @@ permissions:
         default: op
     phaetonessentials.spawn:
         description: Allows you to teleport to the world spawn point
+        default: true
+    phaetonessentials.home:
+        description: Allows you to teleport to your bed
         default: true

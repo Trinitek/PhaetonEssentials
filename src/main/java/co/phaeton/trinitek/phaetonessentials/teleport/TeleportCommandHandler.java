@@ -53,6 +53,9 @@ public class TeleportCommandHandler {
             case "spawn":
                 sender.teleport(sender.getWorld().getSpawnLocation());
                 return true;
+            case "home":
+                sender.teleport(sender.getBedSpawnLocation());
+                return true;
         }
 		
 		/*
