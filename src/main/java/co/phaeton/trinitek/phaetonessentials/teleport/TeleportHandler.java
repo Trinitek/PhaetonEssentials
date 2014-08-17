@@ -32,9 +32,9 @@ public class TeleportHandler implements Listener{
         Location from = event.getFrom();
         Location to = event.getTo();
         PlayerTeleportEvent.TeleportCause cause = event.getCause();
-        Bukkit.getLogger().info(
+        /*Bukkit.getLogger().info(
                 "[PhaetonEssentials] PlayerTeleportEvent fired, player: " + player.getName() +
-                ", cause: " + cause.toString());
+                ", cause: " + cause.toString());*/
         if (cause != PlayerTeleportEvent.TeleportCause.UNKNOWN) {
             TeleportHistoryHandler.add(player, new TeleportHistory(from, TeleportDirection.OUTGOING));
             TeleportHistoryHandler.add(player, new TeleportHistory(to, TeleportDirection.INCOMING));
@@ -47,7 +47,7 @@ public class TeleportHandler implements Listener{
         Player player = event.getPlayer();
         Location from = player.getLocation();
         Location to = event.getRespawnLocation();
-        Bukkit.getLogger().info("[PhaetonEssentials PlayerRespawnEvent fired, player: " + player.getName());
+        //Bukkit.getLogger().info("[PhaetonEssentials] PlayerRespawnEvent fired, player: " + player.getName());
 
         TeleportHistoryHandler.add(player, new TeleportHistory(from, TeleportDirection.OUTGOING));
         TeleportHistoryHandler.add(player, new TeleportHistory(to, TeleportDirection.INCOMING));
