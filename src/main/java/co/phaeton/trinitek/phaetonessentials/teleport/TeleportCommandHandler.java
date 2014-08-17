@@ -54,7 +54,9 @@ public class TeleportCommandHandler {
                 sender.teleport(sender.getWorld().getSpawnLocation());
                 return true;
             case "home":
-                sender.teleport(sender.getBedSpawnLocation());
+                if (sender.getBedSpawnLocation() != null)
+                    sender.teleport(sender.getBedSpawnLocation());
+                else sender.sendMessage(ChatColor.RED + "You must sleep in a bed first to set your home!");
                 return true;
         }
 		
