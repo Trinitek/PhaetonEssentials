@@ -31,7 +31,7 @@ public class TeleportHistoryHandler {
         // If that player already exists, do nothing
         if (!(playerTeleportList.containsKey(player))) {
             playerTeleportList.put(player, historyList);
-            Bukkit.getServer().getLogger().info("[PhaetonEssentials] " + player.getPlayerListName() + " added to TeleportHistory hashmap");
+            //Bukkit.getServer().getLogger().info("[PhaetonEssentials] " + player.getPlayerListName() + " added to TeleportHistory hashmap");
             return true;
         } else return false;
 	}
@@ -43,11 +43,11 @@ public class TeleportHistoryHandler {
 	 */
 	public static void add(Player player, TeleportHistory newEntry) {
 		playerTeleportList.get(player).add(newEntry);
-        Bukkit.getServer().getLogger().info(
+        /*Bukkit.getServer().getLogger().info(
                 "[PhaetonEssentials] TeleportHistory entry added: " +
                 player.getPlayerListName() + ", " +
                 newEntry.getLocation().getBlock().toString() + ", " +
-                newEntry.getDirection().toString());
+                newEntry.getDirection().toString());*/
 	}
 	
 	/**
@@ -64,7 +64,7 @@ public class TeleportHistoryHandler {
 	 * @param player Player that holds the list to be modified
 	 */
 	public static void remove(Player player) {
-        Bukkit.getServer().getLogger().info("[PhaetonEssentials] " + player.getPlayerListName() + " removed from TeleportHistory hashmap");
+        //Bukkit.getServer().getLogger().info("[PhaetonEssentials] " + player.getPlayerListName() + " removed from TeleportHistory hashmap");
 		playerTeleportList.remove(player);
 	}
 
