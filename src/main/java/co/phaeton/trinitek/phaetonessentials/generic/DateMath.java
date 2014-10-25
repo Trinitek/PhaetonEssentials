@@ -2,10 +2,10 @@ package co.phaeton.trinitek.phaetonessentials.generic;
 
 public class DateMath {
 
-    private static int MS_PER_DAY = 86400000;
-    private static int MS_PER_HOUR = 3600000;
-    private static int MS_PER_MINUTE = 60000;
-    private static int MS_PER_SECOND = 1000;
+    private static final int MS_PER_DAY = 86400000;
+    private static final int MS_PER_HOUR = 3600000;
+    private static final int MS_PER_MINUTE = 60000;
+    private static final int MS_PER_SECOND = 1000;
 
     /**
      * Get the number of days between the provided times
